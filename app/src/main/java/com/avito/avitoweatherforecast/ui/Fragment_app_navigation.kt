@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
+import com.avito.avitoweatherforecast.ui.weather.Fragment_weather_fc
 
 class Fragment_app_navigation:Fragment() {
     private var _binding: FragmentAppNavigationViewBinding? = null
@@ -23,7 +24,7 @@ class Fragment_app_navigation:Fragment() {
         _binding = FragmentAppNavigationViewBinding.inflate(inflater)
 
         requireActivity().supportFragmentManager.beginTransaction()
-            .add(binding.navigationContainer.id,Fragment_weather_fc())
+            .add(binding.navigationContainer.id, Fragment_weather_fc())
             .commit()
         return binding.root
     }

@@ -1,4 +1,4 @@
-package com.avito.avitoweatherforecast.ui
+package com.avito.avitoweatherforecast.ui.weather
 
 import android.os.Bundle
 import android.view.LayoutInflater
