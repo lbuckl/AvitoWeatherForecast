@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/appbar"
         android:fitsSystemWindows="true"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="76dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -25,29 +26,38 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/textView_temp_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp">
-                </com.google.android.material.textfield.TextInputEditText>
+                    android:gravity="center"
+                    android:text="Температура"
+                    android:textSize="16sp"
+                    android:minHeight="48dp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/textView_temp_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20sp"
                     android:minHeight="48dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/textView_fl_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Ощущается как"
+                    android:textSize="16sp"
                     android:minHeight="48dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/textView_fl_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20sp"
                     android:minHeight="48dp" />
             </LinearLayout>
 
@@ -60,7 +70,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <TextView
-            android:id="@+id/textView_photoAlbum_name"
+            android:id="@+id/textView_city_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="28sp"
@@ -111,8 +121,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

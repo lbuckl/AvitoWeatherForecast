@@ -24,7 +24,8 @@ class WeatherViewModel(
         getWeatherFromCityName("Ufa")
     }
 
-    private fun getWeatherFromCityName(cityName: String){
+    fun getWeatherFromCityName(cityName: String){
+        liveData.postValue(WeatherAppState.Loading)
         val city = GeocoderRequest.getCoordinatesFromName(cityName)
         Log.v("@@@","${city.name} ${city.lat} ${city.lon}")
 
