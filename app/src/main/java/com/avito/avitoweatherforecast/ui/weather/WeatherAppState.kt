@@ -6,6 +6,6 @@ import com.avito.avitoweatherforecast.domain.Weather
 sealed class WeatherAppState {
     data class Loading(val city: City) : WeatherAppState() // загрузка
     data class Success(val weather: Weather) : WeatherAppState() //Действие при удачной загрузке
-    data class Error(val error: Exception) : WeatherAppState() // Действие при ошибке
+    data class Error(val error: String) : WeatherAppState() // Действие при ошибке
     object Empty: WeatherAppState()
 }

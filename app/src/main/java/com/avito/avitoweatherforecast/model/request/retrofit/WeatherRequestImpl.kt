@@ -1,5 +1,6 @@
 package com.avito.avitoweatherforecast.model.request.retrofit
 
+import android.util.Log
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -13,7 +14,7 @@ import java.io.IOException
  * основная функция для запроса: getRetrofitImpl()
  */
 object WeatherRequestImpl {
-    private const val baseUrl = "https://api.nasa.gov/"
+    private const val baseUrl = "https://api.weather.yandex.ru/"
     private val podRetrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
@@ -34,6 +35,13 @@ object WeatherRequestImpl {
     class PODInterceptor : Interceptor {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
+            val response = chain.proceed(chain.request())
+            when (response.code){
+                in 200..299 -> Log.v("@@@", "Request Success")
+                in 300..399 -> Log.v("@@@", "Request Success")
+                in 400..499 -> Log.v("@@@", "Request Error")
+                in 500..599 -> Log.v("@@@", "Remote server error")
+            }
             return chain.proceed(chain.request())
         }
     }
