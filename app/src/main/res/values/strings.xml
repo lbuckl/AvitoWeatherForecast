@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AvitoWeatherForecast</string>
+
+    <string name="about_app" translatable="false">О приложении</string>
+
+    <!-- Drawer_layout. -->
+    <string name="description" translatable="false">Описание</string>
+    <string name="exit" translatable="false">Выход</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="yes" translatable="false">Да</string>
+    <string name="no" translatable="false">Нет</string>
+
+    <!-- Строки для contentDescription. -->
+    <string name="appbar">appbar</string>
+    <string name="function_button">function_button</string>
+    <string name="find_city">Найти город</string>
+
+
+</resources>
