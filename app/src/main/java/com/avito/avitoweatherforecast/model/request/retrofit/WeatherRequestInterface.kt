@@ -1,4 +1,4 @@
-package com.avito.avitoweatherforecast.model.request
+package com.avito.avitoweatherforecast.model.request.retrofit
 import com.avito.avitoweatherforecast.model.dto.WeatherDTO
 import com.avito.avitoweatherforecast.utils.YANDEX_API_KEY_NAME
 import retrofit2.Call

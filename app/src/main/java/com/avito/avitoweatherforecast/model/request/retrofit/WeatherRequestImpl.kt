@@ -1,4 +1,4 @@
-package com.avito.avitoweatherforecast.model.request
+package com.avito.avitoweatherforecast.model.request.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

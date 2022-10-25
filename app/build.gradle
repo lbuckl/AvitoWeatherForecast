@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id 'com.google.gms.google-services'
+    //id 'com.google.gms.google-services'
 }
 
 android {
@@ -71,5 +71,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
 
     //google maps
-    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    //implementation 'com.google.android.gms:play-services-maps:18.1.0'
 }
