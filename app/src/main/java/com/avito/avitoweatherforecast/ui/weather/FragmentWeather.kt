@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
 
-class Fragment_weather_fc:Fragment() {
+class FragmentWeather:Fragment() {
     private var _binding: FragmentWeatherFcBinding? = null
     private val binding: FragmentWeatherFcBinding
         get() {
