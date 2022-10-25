@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/appbar"
         android:fitsSystemWindows="true"
-        android:layout_marginTop="64dp">
+        android:layout_marginTop="76dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/weather_fc_collapsing_toolbar"
@@ -26,29 +26,29 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textView_general"
+                    android:id="@+id/textView_temp_description"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp">
                 </com.google.android.material.textfield.TextInputEditText>
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textView_comm"
+                    android:id="@+id/textView_temp_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textView_key"
+                    android:id="@+id/textView_fl_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp" />
 
-                <com.google.android.material.button.MaterialButton
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textView_fl_value"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </com.google.android.material.button.MaterialButton>
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.Toolbar
@@ -58,6 +58,17 @@
                 app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <TextView
+            android:id="@+id/textView_photoAlbum_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:gravity="center"
+            android:text="Название города"
+            app:layout_anchor="@id/weather_fc_appbar"
+            app:layout_anchorGravity="bottom" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -102,14 +113,6 @@
         android:layout_gravity="center" />
 
 
-    <TextView
-        android:id="@+id/textView_photoAlbum_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Название города"
-        app:layout_anchor="@id/weather_fc_appbar"
-        app:layout_anchorGravity="bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
