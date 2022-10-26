@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Evening(
     @SerializedName("cloudness")
-    val cloudness: Int,
+    val cloudness: Double,
     @SerializedName("condition")
     val condition: String,
     @SerializedName("daytime")

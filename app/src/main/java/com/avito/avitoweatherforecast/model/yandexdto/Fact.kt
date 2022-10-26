@@ -11,7 +11,7 @@ data class Fact(
     @SerializedName("icon") //ссылка на иконку
     val icon: String,
     @SerializedName("cloudness") // облачность
-    val cloudness: Int,
+    val cloudness: Double,
     @SerializedName("condition") //описание погоды
     val condition: String,
     @SerializedName("daytime") // «d» — светлое время суток. «n» — темное время суток.
