@@ -37,12 +37,12 @@ object WeatherRequestImpl {
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             val response = chain.proceed(chain.request())
             when (response.code){
-                in 200..299 -> Log.v("@@@", "Request Success")
-                in 300..399 -> Log.v("@@@", "Request Success")
-                in 400..499 -> Log.v("@@@", "Request Error")
-                in 500..599 -> Log.v("@@@", "Remote server error")
+                in 200..299 -> Log.v("@@@", "Request Success: ${response.code}")
+                in 300..399 -> Log.v("@@@", "Request Success: ${response.code}")
+                in 400..499 -> Log.v("@@@", "Request Error: ${response.code}")
+                in 500..599 -> Log.v("@@@", "Remote server error: ${response.code}")
             }
-            return chain.proceed(chain.request())
+            return response
         }
     }
 }

@@ -20,9 +20,9 @@ class WeatherViewModel(
         liveData
     }
 
-    init {
+    /*init {
         getWeatherFromCityName("Ufa")
-    }
+    }*/
 
     fun getWeatherFromCityName(cityName: String){
         liveData.postValue(WeatherAppState.Loading)
@@ -33,6 +33,7 @@ class WeatherViewModel(
             BuildConfig.WEATHER_API_KEY, city.lat, city.lon).enqueue(object :
         Callback<WeatherDTO>{
             override fun onResponse(call: Call<WeatherDTO>, response: Response<WeatherDTO>) {
+                Log.v("@@@","Success VM")
                 if (response.body() != null){
                     liveData.postValue(WeatherAppState.Success(
                         collectWeatherFromRequestData(city,response.body()!!)))
@@ -41,6 +42,7 @@ class WeatherViewModel(
             }
 
             override fun onFailure(call: Call<WeatherDTO>, t: Throwable) {
+                Log.v("@@@","Error VM")
                 liveData.postValue(WeatherAppState.Error("Request Error"))
             }
         })
