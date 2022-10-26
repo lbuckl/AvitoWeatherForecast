@@ -47,7 +47,6 @@ class FragmentWeather:Fragment() {
                     progressBar.isVisible = false
                     textViewCityName.text = weatherAppState.weather.city.name
                     textViewTempValue.text = weatherAppState.weather.temperature.toString()
-                    textViewFlValue.text = weatherAppState.weather.feelsLike.toString()
                 }
             }
             is WeatherAppState.Loading -> {
