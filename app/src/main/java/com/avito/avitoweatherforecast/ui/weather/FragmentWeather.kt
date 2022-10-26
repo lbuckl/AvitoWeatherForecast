@@ -43,10 +43,12 @@ class FragmentWeather:Fragment() {
     private fun renderData(weatherAppState: WeatherAppState){
         when (weatherAppState){
             is WeatherAppState.Success -> {
-                with(binding){
-                    progressBar.isVisible = false
-                    textViewCityName.text = weatherAppState.weather.city.name
-                    textViewTempValue.text = weatherAppState.weather.temperature.toString()
+                with(weatherAppState.weather){
+                    binding.progressBar.isVisible = false
+                    binding.textViewCityName.text = city.name
+                    binding.textViewTempValue.text = temperature.toString()
+                    binding.textViewPressureValue.text = pressure.toString()
+                    binding.textViewWindValue.text = windSpeed.toString()
                 }
             }
             is WeatherAppState.Loading -> {

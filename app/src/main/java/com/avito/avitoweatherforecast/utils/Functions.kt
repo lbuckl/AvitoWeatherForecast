@@ -5,10 +5,13 @@ import com.avito.avitoweatherforecast.domain.Weather
 import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 
 
-fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO):Weather{
+fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO): Weather {
     return Weather(
         city,
         weatherDTO.fact.temp,
         weatherDTO.fact.feelsLike,
-        weatherDTO.fact.icon)
+        weatherDTO.fact.icon,
+        weatherDTO.fact.pressureMm,
+        weatherDTO.fact.windSpeed
+    )
 }
