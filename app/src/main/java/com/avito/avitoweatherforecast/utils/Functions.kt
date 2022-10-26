@@ -7,11 +7,16 @@ import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 
 fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO): Weather {
     return Weather(
-        city,
+        City(
+            weatherDTO.geoObject.locality.name,
+            city.lat,
+            city.lon
+        ),
         weatherDTO.fact.temp,
         weatherDTO.fact.feelsLike,
         weatherDTO.fact.icon,
         weatherDTO.fact.pressureMm,
-        weatherDTO.fact.windSpeed
+        weatherDTO.fact.windSpeed,
+        weatherDTO.fact.windDir
     )
 }

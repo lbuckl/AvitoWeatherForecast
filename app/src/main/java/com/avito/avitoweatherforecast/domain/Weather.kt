@@ -10,7 +10,8 @@ data class Weather(
     val feelsLike: Int = 20,
     val icon: String?,
     val pressure: Double,
-    val windSpeed: Double
+    val windSpeed: Double,
+    val windDirection: String
 ): Parcelable
 
 @Parcelize

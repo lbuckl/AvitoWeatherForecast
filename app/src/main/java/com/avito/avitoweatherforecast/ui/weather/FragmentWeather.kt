@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import coil.load
+import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
+import com.avito.avitoweatherforecast.utils.*
 
 class FragmentWeather:Fragment() {
 
@@ -46,9 +49,10 @@ class FragmentWeather:Fragment() {
                 with(weatherAppState.weather){
                     binding.progressBar.isVisible = false
                     binding.textViewCityName.text = city.name
-                    binding.textViewTempValue.text = temperature.toString()
-                    binding.textViewPressureValue.text = pressure.toString()
-                    binding.textViewWindValue.text = windSpeed.toString()
+                    binding.weatherNowDataLayout.textViewTempValue.text = temperature.toString()
+                    binding.weatherNowDataLayout.textViewPressureValue.text = pressure.toString()
+                    binding.weatherNowDataLayout.textViewWindValue.text = windSpeed.toString()
+                    setWindDirection(windDirection)
                 }
             }
             is WeatherAppState.Loading -> {
@@ -69,6 +73,20 @@ class FragmentWeather:Fragment() {
                     viewModel.getWeatherByCity(text)
                 }
             }
+        }
+    }
+
+    private fun setWindDirection(direction: String){
+        when (direction){
+            DIRECTION_NORTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_n)
+            DIRECTION_SOUTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_s)
+            DIRECTION_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_w)
+            DIRECTION_EAST-> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_e)
+            DIRECTION_NORTH_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_nw)
+            DIRECTION_NORTH_EAST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_ne)
+            DIRECTION_SOUTH_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_sw)
+            DIRECTION_SOUTH_EAST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_se)
+            else -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_default)
         }
     }
 }

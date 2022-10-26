@@ -72,4 +72,7 @@ dependencies {
 
     //google maps
     //implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    //Coil image download
+    implementation 'io.coil-kt:coil:2.1.0'
 }
