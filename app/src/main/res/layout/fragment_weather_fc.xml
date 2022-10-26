@@ -137,9 +137,8 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/weather_fc_toolbar"
