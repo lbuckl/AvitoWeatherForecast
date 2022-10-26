@@ -1,4 +1,4 @@
-package com.avito.avitoweatherforecast.model.openweatherdto
+package com.avito.avitoweatherforecast.model.dto.openweather
 
 
 import com.google.gson.annotations.SerializedName

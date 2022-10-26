@@ -1,6 +1,5 @@
 package com.avito.avitoweatherforecast.model.request.retrofit
-import com.avito.avitoweatherforecast.model.dto.WeatherDTO
-import com.avito.avitoweatherforecast.model.yandexdto.YandexWeatherDTO
+import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 import com.avito.avitoweatherforecast.utils.YANDEX_API_KEY_NAME
 import retrofit2.Call
 import retrofit2.http.GET

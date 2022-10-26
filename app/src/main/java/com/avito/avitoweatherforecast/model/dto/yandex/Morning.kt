@@ -1,9 +1,9 @@
-package com.avito.avitoweatherforecast.model.yandexdto
+package com.avito.avitoweatherforecast.model.dto.yandex
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Evening(
+data class Morning(
     @SerializedName("cloudness")
     val cloudness: Double,
     @SerializedName("condition")
@@ -21,13 +21,13 @@ data class Evening(
     @SerializedName("polar")
     val polar: Boolean,
     @SerializedName("prec_mm")
-    val precMm: Double,
+    val precMm: Int,
     @SerializedName("prec_period")
     val precPeriod: Int,
     @SerializedName("prec_prob")
     val precProb: Int,
     @SerializedName("prec_strength")
-    val precStrength: Double,
+    val precStrength: Int,
     @SerializedName("prec_type")
     val precType: Int,
     @SerializedName("pressure_mm")

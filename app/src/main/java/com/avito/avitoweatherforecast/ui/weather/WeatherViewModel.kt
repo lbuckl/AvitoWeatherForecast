@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.avito.avitoweatherforecast.BuildConfig
 import com.avito.avitoweatherforecast.model.request.geocoder.GeocoderRequest
 import com.avito.avitoweatherforecast.model.request.retrofit.YandexWeatherRequestImpl
-import com.avito.avitoweatherforecast.model.yandexdto.YandexWeatherDTO
+import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 import com.avito.avitoweatherforecast.utils.collectWeatherFromRequestData
 import retrofit2.Call
 import retrofit2.Callback

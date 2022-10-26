@@ -1,4 +1,4 @@
-package com.avito.avitoweatherforecast.model.yandexdto
+package com.avito.avitoweatherforecast.model.dto.yandex
 
 
 import com.google.gson.annotations.SerializedName
