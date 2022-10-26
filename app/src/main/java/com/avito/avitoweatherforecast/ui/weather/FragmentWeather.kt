@@ -64,7 +64,8 @@ class FragmentWeather:Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             binding.inputEditText.text.toString().also { text ->
                 if (text != ""){
-                    viewModel.getWeatherFromCityName(text)
+                    //viewModel.getWeatherFromCityName(text)
+                    viewModel.getWeatherByCity(text)
                 }
             }
         }
