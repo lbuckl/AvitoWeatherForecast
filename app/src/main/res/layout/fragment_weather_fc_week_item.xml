@@ -5,7 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:contentPaddingTop="4dp"
+    app:contentPaddingBottom="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -105,14 +108,6 @@
 
             <TextView
                 android:id="@+id/textView_part2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Часть дня"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView_part3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"

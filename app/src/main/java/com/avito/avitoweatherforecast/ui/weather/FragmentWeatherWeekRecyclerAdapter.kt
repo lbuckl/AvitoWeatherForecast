@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcWeekItemBinding
+import com.avito.avitoweatherforecast.domain.FormatDate
 import com.avito.avitoweatherforecast.domain.WeatherData
 import com.avito.avitoweatherforecast.domain.WeatherFCData
 import com.avito.avitoweatherforecast.utils.loadIconFromYandex
@@ -17,6 +18,8 @@ import com.avito.avitoweatherforecast.utils.setWindDirection
  */
 class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<WeatherFCData>):
     RecyclerView.Adapter<FragmentWeatherWeekRecyclerAdapter.WeatherWeekViewHolder>() {
+
+    val deteFormat = FormatDate()
 
     //Создаёт ViewHolder объект опираясь на их количество, но с запасом, чтобы можно было скролить
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherWeekViewHolder {
@@ -43,6 +46,9 @@ class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<Weath
                 it.imageView2.setWindDirection(weatherItem.weatherData[2].windDirection)
                 it.textView.text = weatherItem.weatherData[2].temperature.toString()
                 it.textView3.text = weatherItem.weatherData[2].windSpeed.toString()
+                val splitDate = deteFormat.getCustomDateFormat(weatherItem.date).split("-")
+                it.textViewPart.text = splitDate[0].toUpperCase()
+                it.textViewPart2.text = "${splitDate[1]} ${splitDate[2]}"
             }
         }
     }
