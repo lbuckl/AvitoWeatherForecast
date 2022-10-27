@@ -25,7 +25,7 @@ class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weathe
 
     //Связываем используемые текстовые метки с данными
     override fun onBindViewHolder(holder: WeatherNowViewHolder, position: Int) {
-        holder.bind(weatherListCity[position])
+        holder.bind(weatherListCity[position], position)
     }
 
     //Возвращает количество элементов списка
@@ -36,11 +36,19 @@ class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weathe
     //Класс который непосредственно отображает данные в каждом элементе recyclerview
     inner class WeatherNowViewHolder(view: View): RecyclerView.ViewHolder(view){
         @SuppressLint("SetTextI18n")
-        fun bind(weatherItem: WeatherData){
-            Log.v("@@@",weatherItem.icon.toString())
+        fun bind(weatherItem: WeatherData, position: Int){
             FragmentWeatherFcDayItemBinding.bind(itemView).let {
+                //it.textViewPart.text = weatherItem.part
                 it.imageView.loadIconFromYandex(weatherItem.icon)
                 it.imageView2.setWindDirection(weatherItem.windDirection)
+                it.textView.text = weatherItem.temperature.toString()
+                it.textView3.text = weatherItem.windSpeed.toString()
+                when(position){
+                    0 -> it.textViewPart.text = "Ночь"
+                    1 -> it.textViewPart.text = "Утро"
+                    2 -> it.textViewPart.text = "День"
+                    3 -> it.textViewPart.text = "Вечер"
+                }
             }
         }
     }

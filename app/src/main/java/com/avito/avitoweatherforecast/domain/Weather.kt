@@ -8,7 +8,7 @@ data class Weather(
     val city: City,
     val data: WeatherData,
     val dataDay: List<WeatherData>,
-    val dataWeek: List<WeatherData>
+    val dataWeek: List<WeatherFCData>
 ): Parcelable
 
 @Parcelize
@@ -21,11 +21,16 @@ data class City(
 
 @Parcelize
 data class WeatherData(
-    val date: String,
+    val part: String,
     val temperature: Int,
-    val feelsLike: Int,
     val icon: String?,
     val pressure: Double,
     val windSpeed: Double,
     val windDirection: String
+): Parcelable
+
+@Parcelize
+data class WeatherFCData(
+    val date: String,
+    val weatherData: List<WeatherData>
 ): Parcelable

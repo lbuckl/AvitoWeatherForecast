@@ -55,7 +55,7 @@ class FragmentWeather:Fragment() {
                     binding.weatherNowDataLayout.imageViewWind.setWindDirection(data.windDirection)
                     binding.weatherNowDataLayout.imageView.loadIconFromYandex(data.icon)
                     binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
-                    binding.weatherFcWeekRecyclerview.adapter = FragmentWeatherWeekRecyclerAdapter(dataDay)
+                    binding.weatherFcWeekRecyclerview.adapter = FragmentWeatherWeekRecyclerAdapter(dataWeek)
                 }
             }
             is WeatherAppState.Loading -> {
