@@ -41,6 +41,8 @@ class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<Weath
             FragmentWeatherFcWeekItemBinding.bind(itemView).let {
                 it.imageView.loadIconFromYandex(weatherItem.weatherData[2].icon)
                 it.imageView2.setWindDirection(weatherItem.weatherData[2].windDirection)
+                it.textView.text = weatherItem.weatherData[2].temperature.toString()
+                it.textView3.text = weatherItem.weatherData[2].windSpeed.toString()
             }
         }
     }

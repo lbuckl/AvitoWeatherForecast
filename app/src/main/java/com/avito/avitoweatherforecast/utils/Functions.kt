@@ -35,7 +35,7 @@ fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO): Wea
 }
 
 private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<WeatherData>{
-    return weatherDTO.forecasts[0].parts.let {
+    return weatherDTO.forecasts[day].parts.let {
         listOf(
             WeatherData(
                 it.night.daytime,
@@ -75,12 +75,17 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<Weat
 }
 
 fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
-    return weatherDTO.forecasts.map {
+
+    val map = mutableListOf<WeatherFCData>()
+    for (index in 0 until weatherDTO.forecasts.size){
+        map.add(
             WeatherFCData(
-                it.date,
-                listDTOtoWeatherDay(weatherDTO, 0)
+            weatherDTO.forecasts[index].date,
+            listDTOtoWeatherDay(weatherDTO, index)
             )
+        )
     }
+    return map.toList()
 }
 
 
