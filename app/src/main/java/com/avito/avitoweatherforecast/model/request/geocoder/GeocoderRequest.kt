@@ -8,6 +8,6 @@ object GeocoderRequest {
         val context = MyApp.getMyApp()
         val geocoder = Geocoder(context)
         val result = geocoder.getFromLocationName(name, 1)
-        return City(name,result.first().latitude,result.first().longitude)
+        return City("No_data",name,result.first().latitude,result.first().longitude)
     }
 }

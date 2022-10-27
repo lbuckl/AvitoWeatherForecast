@@ -26,6 +26,8 @@ data class Night(
     val tempMax: Int,
     @SerializedName("temp_min")
     val tempMin: Int,
+    @SerializedName("wind_dir")
+    val windDir: String,
     @SerializedName("wind_speed")
     val windSpeed: Double
 )

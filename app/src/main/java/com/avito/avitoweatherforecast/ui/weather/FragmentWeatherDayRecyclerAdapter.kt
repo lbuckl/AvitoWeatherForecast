@@ -5,18 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcDayItem2Binding
+import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcDayItemBinding
 import com.avito.avitoweatherforecast.domain.Weather
+import com.avito.avitoweatherforecast.domain.WeatherData
 
 /**
  * Кастомный адаптер для вывода списка элементов меню в recyclerview
  */
-class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weather>):
+class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<WeatherData>):
     RecyclerView.Adapter<FragmentWeatherDayRecyclerAdapter.WeatherNowViewHolder>() {
 
     //Создаёт ViewHolder объект опираясь на их количество, но с запасом, чтобы можно было скролить
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherNowViewHolder {
-        val binding = FragmentWeatherFcDayItem2Binding.inflate(LayoutInflater.from(parent.context))
+        val binding = FragmentWeatherFcDayItemBinding.inflate(LayoutInflater.from(parent.context))
         return WeatherNowViewHolder(binding.root)
     }
 
@@ -33,7 +34,7 @@ class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weathe
     //Класс который непосредственно отображает данные в каждом элементе recyclerview
     inner class WeatherNowViewHolder(view: View): RecyclerView.ViewHolder(view){
         @SuppressLint("SetTextI18n")
-        fun bind(weatherItem: Weather){
+        fun bind(weatherItem: WeatherData){
         }
     }
 }

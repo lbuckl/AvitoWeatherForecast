@@ -48,11 +48,11 @@ class FragmentWeather:Fragment() {
                 with(weatherAppState.weather){
                     binding.progressBar.isVisible = false
                     binding.textViewCityName.text = city.name
-                    binding.weatherNowDataLayout.textViewTempValue.text = temperature.toString()
-                    binding.weatherNowDataLayout.textViewPressureValue.text = pressure.toString()
-                    binding.weatherNowDataLayout.textViewWindValue.text = windSpeed.toString()
-                    setWindDirection(windDirection)
-                    //binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(weatherAppState)
+                    binding.weatherNowDataLayout.textViewTempValue.text = data.temperature.toString()
+                    binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
+                    binding.weatherNowDataLayout.textViewWindValue.text = data.windSpeed.toString()
+                    setWindDirection(data.windDirection)
+                    binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
                 }
             }
             is WeatherAppState.Loading -> {
