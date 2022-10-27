@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/appbar"
-        android:fitsSystemWindows="true"
+
         android:backgroundTint="@color/white"
         android:layout_marginTop="76dp">
 
@@ -23,7 +23,9 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:divider="@drawable/linear_layout_divider"
+                app:showDividers="middle|end">
 
                 <include layout="@layout/weather_now_data_layout"
                     android:id="@+id/weather_now_data_layout"/>
@@ -31,10 +33,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/weather_day_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    android:orientation="horizontal"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.Toolbar
@@ -53,7 +54,9 @@
             android:gravity="center"
             android:text="Название города"
             app:layout_anchor="@id/weather_fc_appbar"
-            app:layout_anchorGravity="bottom" />
+            app:layout_anchorGravity="bottom"
+            app:divider="@drawable/linear_layout_divider"
+            app:showDividers="end"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

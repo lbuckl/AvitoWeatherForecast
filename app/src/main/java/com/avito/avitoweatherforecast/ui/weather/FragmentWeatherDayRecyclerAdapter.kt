@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcDayItem2Binding
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcDayItemBinding
 import com.avito.avitoweatherforecast.domain.Weather
 import com.avito.avitoweatherforecast.domain.WeatherData
@@ -20,7 +21,7 @@ class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weathe
 
     //Создаёт ViewHolder объект опираясь на их количество, но с запасом, чтобы можно было скролить
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherNowViewHolder {
-        val binding = FragmentWeatherFcDayItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = FragmentWeatherFcDayItem2Binding.inflate(LayoutInflater.from(parent.context))
         return WeatherNowViewHolder(binding.root)
     }
 
@@ -39,7 +40,7 @@ class FragmentWeatherDayRecyclerAdapter (private val weatherListCity:List<Weathe
         @SuppressLint("SetTextI18n")
         fun bind(weatherItem: WeatherData){
             Log.v("@@@",weatherItem.icon.toString())
-            FragmentWeatherFcDayItemBinding.bind(itemView).let {
+            FragmentWeatherFcDayItem2Binding.bind(itemView).let {
                 it.imageView.loadIconFromYandex(weatherItem.icon)
                 it.imageView2.setWindDirection(weatherItem.windDirection)
             }
