@@ -1,5 +1,8 @@
 package com.avito.avitoweatherforecast.utils
 
+import android.widget.ImageView
+import coil.load
+import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.domain.City
 import com.avito.avitoweatherforecast.domain.Weather
 import com.avito.avitoweatherforecast.domain.WeatherData
@@ -69,5 +72,24 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO):List<WeatherData>{
             ),
         )    
         
+    }
+}
+
+
+fun ImageView.loadIconFromYandex(link: String?){
+    link?.let {load("https://yastatic.net/weather/i/icons/funky/dark/$link.svg")  }
+}
+
+fun ImageView.setWindDirection(direction: String){
+    when (direction){
+        DIRECTION_NORTH -> load(R.drawable.ic_wind_n)
+        DIRECTION_SOUTH -> load(R.drawable.ic_wind_s)
+        DIRECTION_WEST -> load(R.drawable.ic_wind_w)
+        DIRECTION_EAST-> load(R.drawable.ic_wind_e)
+        DIRECTION_NORTH_WEST -> load(R.drawable.ic_wind_nw)
+        DIRECTION_NORTH_EAST -> load(R.drawable.ic_wind_ne)
+        DIRECTION_SOUTH_WEST -> load(R.drawable.ic_wind_sw)
+        DIRECTION_SOUTH_EAST -> load(R.drawable.ic_wind_se)
+        else -> load(R.drawable.ic_wind_default)
     }
 }

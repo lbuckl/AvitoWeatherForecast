@@ -51,7 +51,7 @@ class FragmentWeather:Fragment() {
                     binding.weatherNowDataLayout.textViewTempValue.text = data.temperature.toString()
                     binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
                     binding.weatherNowDataLayout.textViewWindValue.text = data.windSpeed.toString()
-                    setWindDirection(data.windDirection)
+                    binding.weatherNowDataLayout.imageViewWind.setWindDirection(data.windDirection)
                     binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
                 }
             }
@@ -76,7 +76,7 @@ class FragmentWeather:Fragment() {
         }
     }
 
-    private fun setWindDirection(direction: String){
+    /*private fun setWindDirection(direction: String){
         when (direction){
             DIRECTION_NORTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_n)
             DIRECTION_SOUTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_s)
@@ -88,5 +88,5 @@ class FragmentWeather:Fragment() {
             DIRECTION_SOUTH_EAST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_se)
             else -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_default)
         }
-    }
+    }*/
 }
