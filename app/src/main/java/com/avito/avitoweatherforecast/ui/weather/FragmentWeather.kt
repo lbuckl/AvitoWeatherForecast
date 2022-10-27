@@ -11,6 +11,7 @@ import coil.load
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
 import com.avito.avitoweatherforecast.utils.*
+import com.gb.weather.view.weatherlist.FragmentWeatherDayRecyclerAdapter
 
 class FragmentWeather:Fragment() {
 
@@ -36,9 +37,7 @@ class FragmentWeather:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initialization()
-
         viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner) { t -> renderData(t) }
     }
@@ -53,6 +52,7 @@ class FragmentWeather:Fragment() {
                     binding.weatherNowDataLayout.textViewPressureValue.text = pressure.toString()
                     binding.weatherNowDataLayout.textViewWindValue.text = windSpeed.toString()
                     setWindDirection(windDirection)
+                    //binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(weatherAppState)
                 }
             }
             is WeatherAppState.Loading -> {
