@@ -9,14 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/appbar"
-
         android:backgroundTint="@color/white"
-        android:layout_marginTop="76dp">
+        android:layout_marginTop="54dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/weather_fc_collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
@@ -64,11 +63,9 @@
         android:id="@+id/input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
         android:hint="@string/find_city"
         android:textColorHint="?colorSecondaryVariant"
-        app:counterEnabled="true"
-        app:counterMaxLength="30"
         app:endIconCheckable="true"
         app:endIconDrawable="@android:drawable/ic_menu_send"
         app:endIconMode="custom"
@@ -86,7 +83,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weather_fc_recyclerview"
+        android:id="@+id/weather_fc_week_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

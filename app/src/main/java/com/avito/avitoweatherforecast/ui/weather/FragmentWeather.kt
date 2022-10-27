@@ -12,6 +12,7 @@ import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
 import com.avito.avitoweatherforecast.utils.*
 import com.gb.weather.view.weatherlist.FragmentWeatherDayRecyclerAdapter
+import com.gb.weather.view.weatherlist.FragmentWeatherWeekRecyclerAdapter
 
 class FragmentWeather:Fragment() {
 
@@ -54,6 +55,7 @@ class FragmentWeather:Fragment() {
                     binding.weatherNowDataLayout.imageViewWind.setWindDirection(data.windDirection)
                     binding.weatherNowDataLayout.imageView.loadIconFromYandex(data.icon)
                     binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
+                    binding.weatherFcWeekRecyclerview.adapter = FragmentWeatherWeekRecyclerAdapter(dataDay)
                 }
             }
             is WeatherAppState.Loading -> {
