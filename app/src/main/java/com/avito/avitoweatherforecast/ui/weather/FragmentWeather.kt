@@ -52,6 +52,7 @@ class FragmentWeather:Fragment() {
                     binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
                     binding.weatherNowDataLayout.textViewWindValue.text = data.windSpeed.toString()
                     binding.weatherNowDataLayout.imageViewWind.setWindDirection(data.windDirection)
+                    binding.weatherNowDataLayout.imageView.loadIconFromYandex(data.icon)
                     binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
                 }
             }

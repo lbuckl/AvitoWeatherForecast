@@ -1,7 +1,10 @@
 package com.avito.avitoweatherforecast.utils
 
 import android.widget.ImageView
+import coil.ImageLoader
+import coil.decode.SvgDecoder
 import coil.load
+import coil.request.ImageRequest
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.domain.City
 import com.avito.avitoweatherforecast.domain.Weather
@@ -77,7 +80,25 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO):List<WeatherData>{
 
 
 fun ImageView.loadIconFromYandex(link: String?){
-    link?.let {load("https://yastatic.net/weather/i/icons/funky/dark/$link.svg")  }
+
+    //инцииализирем загрузчик
+    val imageLoader = context?.let {
+        ImageLoader.Builder(it)
+            .components {
+                add(SvgDecoder.Factory())
+            }
+            .build()
+    }
+
+    //формируем запрос
+    val request = context?.let {
+        ImageRequest.Builder(it)
+            .data("https://yastatic.net/weather/i/icons/funky/dark/$link.svg")
+            .crossfade(true)
+            .target(this)
+            .build()
+    }
+    imageLoader?.enqueue(request!!)
 }
 
 fun ImageView.setWindDirection(direction: String){
