@@ -17,6 +17,7 @@ class WeatherViewModel(
     ViewModel() {
 
     val getLiveData = {
+        getWeatherByCity("Уфа")
         liveData
     }
 
