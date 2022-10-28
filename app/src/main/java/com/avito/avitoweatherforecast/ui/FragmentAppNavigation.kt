@@ -178,8 +178,8 @@ class FragmentAppNavigation : Fragment() {
                     animateLoadingGeolocation()
                     locationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
-                        0L,
-                        1000F, locationListener
+                        2000L,
+                        0F, locationListener
                     )
                 }else{
                     Log.d("@@@","checkPermission")
@@ -226,7 +226,7 @@ class FragmentAppNavigation : Fragment() {
         Log.d("@@@", "$time")
     }
 
-    fun animateLoadingGeolocation(){
+    private fun animateLoadingGeolocation(){
         binding.fabMyLocation.setImageDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
