@@ -14,3 +14,10 @@ const val DIRECTION_SOUTH_EAST = "se"
 
 //Константы для Permission
 const val REQUEST_CODE_GEOLOCATION = 111
+
+//Константа задержки появления текста в приветственных фрагментах
+const val VISIBLE_DELAY = 2000L
+
+//Константа для хранения флага первого запуска приложения
+const val INITIALIZATION = "init"
+const val FIRST_ACTIVE = "first_active"
