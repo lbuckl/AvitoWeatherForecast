@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"/>
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.Toolbar
@@ -49,8 +49,9 @@
             android:id="@+id/textView_city_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
+            android:textSize="28sp"
             android:gravity="center"
+            android:elevation="20dp"
             android:text="Название города"
             app:layout_anchor="@id/weather_fc_appbar"
             app:layout_anchorGravity="bottom"

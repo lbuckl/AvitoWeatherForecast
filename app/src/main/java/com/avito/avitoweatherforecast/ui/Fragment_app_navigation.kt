@@ -24,7 +24,7 @@ class Fragment_app_navigation:Fragment() {
         _binding = FragmentAppNavigationViewBinding.inflate(inflater)
 
         requireActivity().supportFragmentManager.beginTransaction()
-            .add(binding.navigationContainer.id, FragmentWeather())
+            .replace(binding.navigationContainer.id, FragmentWeather())
             .commit()
         return binding.root
     }

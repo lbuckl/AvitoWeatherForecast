@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
@@ -41,6 +44,10 @@ class FragmentWeather:Fragment() {
         initialization()
         viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner) { t -> renderData(t) }
+
+        binding.weatherDayRecyclerview.addItemDecoration(
+            DividerItemDecoration(requireContext(),GridLayoutManager.HORIZONTAL)
+        )
     }
 
     private fun renderData(weatherAppState: WeatherAppState){
@@ -48,7 +55,7 @@ class FragmentWeather:Fragment() {
             is WeatherAppState.Success -> {
                 with(weatherAppState.weather){
                     binding.progressBar.isVisible = false
-                    binding.textViewCityName.text = city.name
+                    binding.textViewCityName.text = "${city.country}, ${city.name}"
                     binding.weatherNowDataLayout.textViewTempValue.text = data.temperature.toString()
                     binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
                     binding.weatherNowDataLayout.textViewWindValue.text = data.windSpeed.toString()
