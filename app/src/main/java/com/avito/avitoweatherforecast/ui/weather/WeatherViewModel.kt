@@ -30,7 +30,6 @@ class WeatherViewModel(
             BuildConfig.YANDEX_WEATHER_TRIAL_API_KEY, city.lat, city.lon,7,false,"ru_RU").enqueue(object :
             Callback<YandexWeatherDTO>{
             override fun onResponse(call: Call<YandexWeatherDTO>, response: Response<YandexWeatherDTO>) {
-                Log.v("okhttp@@@","Success VM")
                 if (response.body() != null){
                     liveData.postValue(WeatherAppState.Success(
                         collectWeatherFromRequestData(city,response.body()!!)))
@@ -39,7 +38,6 @@ class WeatherViewModel(
             }
 
             override fun onFailure(call: Call<YandexWeatherDTO>, t: Throwable) {
-                Log.v("okhttp@@@","Error VM")
                 liveData.postValue(WeatherAppState.Error("Request Error"))
             }
         })

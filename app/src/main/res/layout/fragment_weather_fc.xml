@@ -45,18 +45,28 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <TextView
-            android:id="@+id/textView_city_name"
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:gravity="center"
-            android:elevation="20dp"
-            android:text="Название города"
-            app:layout_anchor="@id/weather_fc_appbar"
-            app:layout_anchorGravity="bottom"
-            app:divider="@drawable/linear_layout_divider"
-            app:showDividers="end"/>
+            app:contentPaddingTop="8dp"
+            app:contentPaddingBottom="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true">
+            <TextView
+                android:id="@+id/textView_city_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:elevation="20dp"
+                android:text="Название города"
+                app:layout_anchor="@id/weather_fc_appbar"
+                app:layout_anchorGravity="bottom"
+                app:divider="@drawable/linear_layout_divider"
+                app:showDividers="end"/>
+        </androidx.cardview.widget.CardView>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -78,6 +88,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_edit_text"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />

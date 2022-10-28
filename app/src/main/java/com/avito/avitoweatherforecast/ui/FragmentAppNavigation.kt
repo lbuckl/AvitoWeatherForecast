@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
 import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
 
-class Fragment_app_navigation:Fragment() {
+class FragmentAppNavigation:Fragment() {
     private var _binding: FragmentAppNavigationViewBinding? = null
     private val binding: FragmentAppNavigationViewBinding
         get() {

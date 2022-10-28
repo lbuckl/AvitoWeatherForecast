@@ -3,7 +3,8 @@ package com.avito.avitoweatherforecast
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.avito.avitoweatherforecast.ui.Fragment_app_navigation
+import com.avito.avitoweatherforecast.ui.FragmentAppNavigation
+import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
 
 class MainActivity : AppCompatActivity() {
     init {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState==null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.included_navigation, Fragment_app_navigation())
+                .add(R.id.main_layout, FragmentAppNavigation())
                 .commit()
         }
     }
