@@ -42,10 +42,14 @@ class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<Weath
         @SuppressLint("SetTextI18n")
         fun bind(weatherItem: WeatherFCData){
             FragmentWeatherFcWeekItemBinding.bind(itemView).let {
-                it.imageView.loadIconFromYandex(weatherItem.weatherData[2].icon)
-                it.imageView2.setWindDirection(weatherItem.weatherData[2].windDirection)
-                it.textView.text = weatherItem.weatherData[2].temperature.toString()
-                it.textView3.text = weatherItem.weatherData[2].windSpeed.toString()
+                with(weatherItem.weatherData[2]){
+                    it.imageView.loadIconFromYandex(icon)
+                    it.imageView2.setWindDirection(windDirection)
+                    val temperatureRange = "${weatherItem.weatherData[0].temperature} : ${weatherItem.weatherData[2].temperature}"
+                    it.textView.text = temperatureRange
+                    it.textView3.text = windSpeed.toString()
+                }
+
                 val splitDate = deteFormat.getCustomDateFormat(weatherItem.date).split("-")
                 it.textViewPart.text = splitDate[0].toUpperCase()
                 it.textViewPart2.text = "${splitDate[1]} ${splitDate[2]}"
