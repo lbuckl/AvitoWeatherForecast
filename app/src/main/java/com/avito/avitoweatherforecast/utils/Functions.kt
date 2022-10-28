@@ -1,10 +1,18 @@
 package com.avito.avitoweatherforecast.utils
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
 import coil.request.ImageRequest
+import com.avito.avitoweatherforecast.MyApp
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.domain.City
 import com.avito.avitoweatherforecast.domain.Weather
@@ -124,3 +132,61 @@ fun ImageView.setWindDirection(direction: String){
         else -> load(R.drawable.ic_wind_default)
     }
 }
+
+//region функция для выдачи разрешения
+/**
+ * на вход подаются:
+ * - имя разрешения permissionName например Manifest.permission.CALL_PHONE
+ * - активити и контекст (можно передавать requireActivity(),requireContext() из фрагмента)
+ * - уникальный код под которым будет зарегистрировано разрешение
+ *
+ */
+fun getSinglePermission(permissionName: String,
+                        activity: Activity,
+                        context: Context,
+                        requereCode:Int):Boolean {
+    var textPermission = ""
+    when (permissionName){
+        (Manifest.permission.ACCESS_FINE_LOCATION) -> textPermission = "\"геолокация\""
+        (Manifest.permission.READ_CONTACTS) -> textPermission = "\"чтение контактов\""
+        (Manifest.permission.CALL_PHONE) -> textPermission = "\"вызовы\""
+    }
+
+    if (checkSinglePermission(permissionName)) {
+        return true
+        //Проверяем а не 2 ли это попытка запросить разрешение
+    } else if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permissionName)){
+        AlertDialog.Builder(context)
+            .setTitle("Доступ к функции $textPermission")
+            .setMessage("Для работы с функцией $textPermission нужно дать соответствующее разрешение")
+            .setPositiveButton("Логично") { _, _ ->
+                permissionRequest(
+                    arrayOf(permissionName),activity,requereCode)
+            }
+            .setNegativeButton("Бред") { dialog, _ -> dialog.dismiss() }
+            .create()
+            .show()
+        return checkSinglePermission(permissionName)
+    } else {
+        permissionRequest(arrayOf(permissionName),activity,requereCode)
+        return checkSinglePermission(permissionName)
+    }
+}
+
+//Функция, которая непосредственно отображает окно с подтверждением
+private fun permissionRequest(permissions: Array<String>, activity: Activity, requestCode:Int) {
+    ActivityCompat.requestPermissions(activity, permissions, requestCode)
+}
+
+/**
+ * Функция для проверки "активно или отозвано разрешение (permission)"
+ * ___________________________________________________________________________
+ * на вход падаётся имя permissionName например Manifest.permission.CALL_PHONE
+ * функция возвращает ответ о состоянии permission: true - активно, false - отозвано
+ */
+fun checkSinglePermission(permissionName: String):Boolean{
+    val context = MyApp.getMyApp()
+    val permission = ContextCompat.checkSelfPermission(context, permissionName)
+    return permission == PackageManager.PERMISSION_GRANTED
+}
+//endregion

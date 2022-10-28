@@ -79,24 +79,9 @@ class FragmentWeather:Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             binding.inputEditText.text.toString().also { text ->
                 if (text != ""){
-                    //viewModel.getWeatherFromCityName(text)
                     viewModel.getWeatherByCity(text)
                 }
             }
         }
     }
-
-    /*private fun setWindDirection(direction: String){
-        when (direction){
-            DIRECTION_NORTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_n)
-            DIRECTION_SOUTH -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_s)
-            DIRECTION_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_w)
-            DIRECTION_EAST-> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_e)
-            DIRECTION_NORTH_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_nw)
-            DIRECTION_NORTH_EAST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_ne)
-            DIRECTION_SOUTH_WEST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_sw)
-            DIRECTION_SOUTH_EAST -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_se)
-            else -> binding.weatherNowDataLayout.imageViewWind.load(R.drawable.ic_wind_default)
-        }
-    }*/
 }

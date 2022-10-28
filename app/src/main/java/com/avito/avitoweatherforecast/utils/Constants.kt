@@ -11,3 +11,6 @@ const val DIRECTION_NORTH_WEST = "nw"
 const val DIRECTION_NORTH_EAST = "ne"
 const val DIRECTION_SOUTH_WEST = "sw"
 const val DIRECTION_SOUTH_EAST = "se"
+
+//Константы для Permission
+const val REQUEST_CODE_GEOLOCATION = 111
