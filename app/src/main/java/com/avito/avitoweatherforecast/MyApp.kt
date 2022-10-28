@@ -1,7 +1,6 @@
 package com.avito.avitoweatherforecast
 
 import android.app.Application
-import android.util.Log
 
 class MyApp : Application() {
     override fun onCreate() {
