@@ -2,7 +2,7 @@ package com.avito.avitoweatherforecast.utils
 
 const val YANDEX_API_KEY_NAME = "X-Yandex-API-Key"
 
-//
+//Константы направления ветра
 const val DIRECTION_NORTH = "n"
 const val DIRECTION_SOUTH = "s"
 const val DIRECTION_WEST = "w"
@@ -21,3 +21,16 @@ const val VISIBLE_DELAY = 2000L
 //Константа для хранения флага первого запуска приложения
 const val INITIALIZATION = "init"
 const val FIRST_ACTIVE = "first_active"
+
+/**
+ * Группа констант для фрагмента "Настройки"
+ */
+const val PREF_SETTINGS = "PREF_SETTINGS"
+//Настройки темы приложения
+const val PREF_THEME_INT = "PREF_THEME_INT"
+const val THEME_LIGHT = 0
+const val THEME_DARK = 1
+
+//константы для работы боковой навигации
+const val TAG_FRAGMENT_ABOUT = "About_Fragment"
+const val TAG_FRAGMENT_SETTINGS = "Settings_Fragment"

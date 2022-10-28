@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load

@@ -5,4 +5,7 @@
     <!-- View_pager greetings. -->
     <dimen name="view_pager_navi_points_margin_start">8dp</dimen>
     <dimen name="view_pager_navi_points_margin_bottom">48dp</dimen>
+
+    <!-- Фрагмент Settings. -->
+    <dimen name="settingsGeneralMargin">8dp</dimen>
 </resources>

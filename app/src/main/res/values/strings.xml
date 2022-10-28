@@ -25,5 +25,14 @@
     <string name="navigation_indicator_2">navigation_indicator_2</string>
     <string name="navigation_indicator_3">navigation_indicator_3</string>
 
+    <!-- Строки для Settings. -->
+    <string name="style">Style</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="language">Language</string>
+    <string name="russian">Russian</string>
+    <string name="english">English</string>
+    <string name="apply">Apply</string>
+    <string name="watch_greetings_again">Посмотреть приветсвие ещё раз</string>
 
 </resources>

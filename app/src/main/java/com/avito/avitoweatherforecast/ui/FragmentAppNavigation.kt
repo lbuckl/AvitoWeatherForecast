@@ -2,16 +2,16 @@ package com.avito.avitoweatherforecast.ui
 
 import android.Manifest
 import android.animation.ObjectAnimator
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -23,9 +23,7 @@ import androidx.transition.TransitionSet
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
 import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
-import com.avito.avitoweatherforecast.utils.REQUEST_CODE_GEOLOCATION
-import com.avito.avitoweatherforecast.utils.checkSinglePermission
-import com.avito.avitoweatherforecast.utils.getSinglePermission
+import com.avito.avitoweatherforecast.utils.*
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.system.measureTimeMillis
@@ -60,10 +58,9 @@ class FragmentAppNavigation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initFabMenu()
         initFabMyLocation()
-
+        inintMenu()
     }
 
     private fun initFabMenu() {
@@ -250,6 +247,57 @@ class FragmentAppNavigation : Fragment() {
         }
 
     }
+
+    private fun inintMenu() {
+        binding.navigationView.setNavigationItemSelectedListener {
+            Log.v("@@@","navigationView")
+            when (it.itemId){
+                R.id.Drawer_About -> {
+                    Log.v("@@@","Drawer_About")
+                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_ABOUT)
+                    //replaceFragment(findFragment,AbautFragment(),TAG_FRAGMENT_ABOUT)
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.Drawer_Settings -> {
+                    Log.v("@@@","Drawer_Settings")
+                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_SETTINGS)
+                    replaceFragment(findFragment,SettingsFragment(),TAG_FRAGMENT_SETTINGS)
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.Drawer_exit -> {
+                    Log.v("@@@","Drawer_exit")
+                    AlertDialog.Builder(requireActivity()).also {
+                        it.setTitle("Выход")
+                            .setPositiveButton("Да"
+                            ) { dialog, which -> requireActivity().finishActivity(0) }
+                            .setNegativeButton("Нет",
+                            ){ dialog, which -> binding.drawerLayout.close()}
+                    }
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> return@setNavigationItemSelectedListener false
+            }
+        }
+    }
+
+    /**
+     * Функция для замены фрагмента в контейнере
+     * если фрагмент ещё живой, то возвращает его в контейнер
+     * если фрагмента нет, то создаёт новый
+     */
+    private fun replaceFragment(findFragment: Fragment?, newFragment: Fragment, flag:String){
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            if (findFragment == null) {
+                replace(binding.navigationContainer.id, newFragment, flag)
+                    .addToBackStack("Contacts")
+                    .commitAllowingStateLoss()
+            } else {
+                replace(binding.navigationContainer.id, findFragment, flag)
+                    .commitAllowingStateLoss()
+            }
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
