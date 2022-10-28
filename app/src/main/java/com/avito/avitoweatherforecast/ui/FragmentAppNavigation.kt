@@ -1,6 +1,7 @@
 package com.avito.avitoweatherforecast.ui
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.location.Geocoder
 import android.location.Location
@@ -38,7 +39,10 @@ class FragmentAppNavigation : Fragment() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     private val FAB_ANIMATION_DURATION = 600L
+    private val TAG_WEATHER_FRAGMENT = "weather_fragment"
     lateinit var locationManager: LocationManager
+    var fabMyLocationLoading = false
+    val fragmentWeather = FragmentWeather()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +53,7 @@ class FragmentAppNavigation : Fragment() {
         _binding = FragmentAppNavigationViewBinding.inflate(inflater)
 
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(binding.navigationContainer.id, FragmentWeather())
+            .replace(binding.navigationContainer.id, fragmentWeather,TAG_WEATHER_FRAGMENT)
             .commit()
         return binding.root
     }
@@ -163,12 +167,15 @@ class FragmentAppNavigation : Fragment() {
     private fun initFabMyLocation(){
         binding.fabMyLocation.setOnClickListener {
             if (checkSinglePermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Log.d("@@@","ACCESS_FINE_LOCATION")
                 locationManager =
                     requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
+                    Log.d("@@@","GPS_PROVIDER")
                     //locationManager теперь имеет доступ ко всем провайдерам по умолчанию
                     //locationManager.getProvider(LocationManager.GPS_PROVIDER)
+                    fabMyLocationLoading = true
+                    animateLoadingGeolocation()
                     locationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
                         0L,
@@ -204,21 +211,50 @@ class FragmentAppNavigation : Fragment() {
     }
 
     fun getAddress(location: Location) {
+        Log.d("@@@", "getAddress")
         locationManager.removeUpdates(locationListener)
         val geocoder = Geocoder(context, Locale("ru_RU"))
         val time = measureTimeMillis {
-            Thread{
+            coroutineScope.launch {
                 val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
                 Log.v("@@@","${address.first().locality},${location.latitude}, ${location.longitude}")
-                //viewModel.loadWeather(City(address.first().locality,location.latitude, location.longitude))
+                fabMyLocationLoading = false
+                fragmentWeather.getWeather(address.first().locality)
+
             }.start()
         }
         Log.d("@@@", "$time")
     }
 
+    fun animateLoadingGeolocation(){
+        binding.fabMyLocation.setImageDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                (R.drawable.ic_loading)
+            )
+        )
+        coroutineScope.launch{
+            while (fabMyLocationLoading){
+                ObjectAnimator
+                    .ofFloat(binding.fabMyLocation,View.ROTATION,0f,360F)
+                    .setDuration(FAB_ANIMATION_DURATION*2)
+                    .start()
+                delay(FAB_ANIMATION_DURATION*2)
+            }
+            binding.fabMyLocation.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    (R.drawable.ic_location)
+                )
+            )
+        }
+
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         coroutineScope.cancel()
+        locationManager.removeUpdates(locationListener)
         _binding = null
     }
 }

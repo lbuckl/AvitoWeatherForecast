@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
-import com.avito.avitoweatherforecast.utils.*
+import com.avito.avitoweatherforecast.utils.loadIconFromYandex
+import com.avito.avitoweatherforecast.utils.setWindDirection
 import com.gb.weather.view.weatherlist.FragmentWeatherDayRecyclerAdapter
 import com.gb.weather.view.weatherlist.FragmentWeatherWeekRecyclerAdapter
 
@@ -79,9 +77,14 @@ class FragmentWeather:Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             binding.inputEditText.text.toString().also { text ->
                 if (text != ""){
-                    viewModel.getWeatherByCity(text)
+                    getWeather(text)
                 }
             }
         }
+    }
+
+    //Не приватная, потому что необходимо
+    fun getWeather(text:String){
+        viewModel.getWeatherByCity(text)
     }
 }

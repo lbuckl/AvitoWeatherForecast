@@ -65,7 +65,7 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_dialog_map" />
+            app:srcCompat="@drawable/ic_location" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_middle"
