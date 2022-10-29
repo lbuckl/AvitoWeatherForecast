@@ -2,13 +2,12 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="@dimen/fc_week_item_corner_radius"
     app:cardUseCompatPadding="true"
-    app:contentPaddingTop="4dp"
-    app:contentPaddingBottom="4dp">
+    app:contentPaddingTop="@dimen/fc_week_item_card_padding"
+    app:contentPaddingBottom="@dimen/fc_week_item_card_padding">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,9 +24,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView2"
-            android:layout_width="28dp"
+            android:layout_width="@dimen/fc_week_item_wind_width"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/fc_week_item_wind_marginStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,9 +47,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:text="10 : 20"
-                android:textSize="20sp" />
+                android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
+                android:textSize="@dimen/fc_week_item_textSize" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -58,9 +56,9 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:text="°C "
-                android:textSize="20sp" />
+                android:text="@string/dim_g_c"
+                android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
+                android:textSize="@dimen/fc_week_item_textSize" />
         </LinearLayout>
 
 
@@ -79,9 +77,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:text="5"
-                android:textSize="20sp" />
+                android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
+                android:textSize="@dimen/fc_week_item_textSize"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -89,9 +86,9 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:text="m/c "
-                android:textSize="20sp" />
+                android:text="@string/dim_mc"
+                android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
+                android:textSize="@dimen/fc_week_item_textSize" />
         </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -108,16 +105,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Часть дня"
-                android:textSize="20sp" />
+                android:textSize="@dimen/fc_week_item_textSize" />
 
             <TextView
                 android:id="@+id/textView_part2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Часть дня"
-                android:textSize="20sp" />
+                android:textSize="@dimen/fc_week_item_textSize" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //setTheme(R.style.Theme_Dark)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -34,7 +37,5 @@ class MainActivity : AppCompatActivity() {
                     .commit()
             }
         }
-
-
     }
 }

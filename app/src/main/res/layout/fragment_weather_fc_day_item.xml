@@ -2,10 +2,9 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="@dimen/fc_day_item_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Часть дня"
-                android:textSize="20sp" />
+                android:textSize="@dimen/fc_day_item_textSize" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -34,7 +32,7 @@
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/fc_week_item_marginStart"
             app:layout_constraintBottom_toTopOf="@+id/barrier_middle"
             app:layout_constraintEnd_toStartOf="@+id/barrier_vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +43,7 @@
             android:id="@+id/imageView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/fc_week_item_marginStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/barrier_vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/fc_week_item_marginStart"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
             app:layout_constraintTop_toTopOf="@+id/imageView">
@@ -67,16 +65,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="10 : 20 "
-                android:textSize="20sp" />
+                android:textSize="@dimen/fc_day_item_textSize" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="°C "
-                android:textSize="20sp" />
+                android:text="@string/dim_g_c"
+                android:textSize="@dimen/fc_day_item_textSize" />
         </LinearLayout>
 
 
@@ -84,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/fc_week_item_marginStart"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
             app:layout_constraintTop_toTopOf="@+id/imageView2">
@@ -94,16 +91,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="5 "
-                android:textSize="20sp" />
+                android:textSize="@dimen/fc_day_item_textSize" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="m/c "
-                android:textSize="20sp" />
+                android:text="@string/dim_mc"
+                android:textSize="@dimen/fc_day_item_textSize" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline

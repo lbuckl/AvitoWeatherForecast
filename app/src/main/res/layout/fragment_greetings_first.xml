@@ -9,12 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
+        android:contentDescription="@string/greetings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/view_earth" />
 
     <TextView
@@ -35,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1A000000"
+        android:contentDescription="@string/greetings"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
         app:srcCompat="@drawable/ic_swipe" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout"

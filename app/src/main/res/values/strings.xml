@@ -2,7 +2,7 @@
     <!-- Общие. -->
     <string name="app_name">AvitoWeatherForecast</string>
     <string name="about_app" translatable="false">О приложении</string>
-    <string name="description" translatable="false">Приложение \"Прогноз погоды\"</string>
+    <string name="app_description" translatable="false">Приложение \"Прогноз погоды\"</string>
     <string name="yes" translatable="false">Да</string>
     <string name="no" translatable="false">Нет</string>
     <string name="exit" translatable="false">Выход</string>
@@ -29,9 +29,20 @@
     <string name="appbar">appbar</string>
     <string name="function_button">function_button</string>
     <string name="find_city">Найти город</string>
-    <string name="navigation_indicator_1">navigation_indicator_1</string>
-    <string name="navigation_indicator_2">navigation_indicator_2</string>
-    <string name="navigation_indicator_3">navigation_indicator_3</string>
+    <string name="navigation_indicator_1">navigation_indicator_first</string>
+    <string name="navigation_indicator_2">navigation_indicator_second</string>
+    <string name="navigation_indicator_3">navigation_indicator_threeth</string>
+    <string name="header">header</string>
+    <string name="greetings">greetings</string>
 
+    <!-- Строки для fragment_weather_fc... -->
+    <string name="pressure">Давление</string>
+    <string name="value">Значение</string>
+    <string name="dim_mm_r_s">мм рт.ст</string>
+    <string name="temperature">Температура</string>
+    <string name="dim_g_c">°C</string>
+    <string name="wind">Ветер</string>
+    <string name="dim_mc">м/с</string>
+    <string name="value_dim_mc">Значение,(м/с)</string>
 
 </resources>

@@ -12,4 +12,15 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorAccent40Alfa">#6603DAC5</color>
     <color name="generalHintTextColor">#8C8C8C</color>
+
+    <!-- Theme.AvitoWeatherForecast. -->
+    <color name="customColorBackground">#C7E2FA</color>
+    <color name="customColorBackgroundTint">#D8E9F8</color>
+
+    <!-- SpaceStyle. -->
+    <color name="bluePrimary">#043C6B</color>
+    <color name="bluePrimaryVariant">#0B5FA5</color>
+    <color name="blueSecondaryVariant">#3F8FD2</color>
+    <color name="blueBack">#25547B</color>
+    <color name="spaceStyleText">#FF9400</color>
 </resources>
