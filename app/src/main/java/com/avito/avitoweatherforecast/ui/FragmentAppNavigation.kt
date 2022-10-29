@@ -4,6 +4,7 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
@@ -164,11 +165,9 @@ class FragmentAppNavigation : Fragment() {
     private fun initFabMyLocation(){
         binding.fabMyLocation.setOnClickListener {
             if (checkSinglePermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Log.d("@@@","ACCESS_FINE_LOCATION")
                 locationManager =
                     requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    Log.d("@@@","GPS_PROVIDER")
                     //locationManager теперь имеет доступ ко всем провайдерам по умолчанию
                     //locationManager.getProvider(LocationManager.GPS_PROVIDER)
                     fabMyLocationLoading = true
@@ -179,7 +178,6 @@ class FragmentAppNavigation : Fragment() {
                         0F, locationListener
                     )
                 }else{
-                    Log.d("@@@","checkPermission")
                 }
             }
             else {
@@ -190,25 +188,9 @@ class FragmentAppNavigation : Fragment() {
         }
     }
 
-    private val locationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-            Log.d("@@@", "${location.latitude} ${location.longitude}")
-            getAddress(location)
-        }
-
-        override fun onProviderDisabled(provider: String) {
-            Log.d("@@@", "onProviderDisabled")
-            super.onProviderDisabled(provider)
-        }
-
-        override fun onProviderEnabled(provider: String) {
-            Log.d("@@@", "onProviderEnabled")
-            super.onProviderEnabled(provider)
-        }
-    }
+    private val locationListener = LocationListener { location -> getAddress(location) }
 
     fun getAddress(location: Location) {
-        Log.d("@@@", "getAddress")
         locationManager.removeUpdates(locationListener)
         val geocoder = Geocoder(context, Locale("ru_RU"))
         val time = measureTimeMillis {
@@ -250,29 +232,28 @@ class FragmentAppNavigation : Fragment() {
 
     private fun inintMenu() {
         binding.navigationView.setNavigationItemSelectedListener {
-            Log.v("@@@","navigationView")
             when (it.itemId){
                 R.id.Drawer_About -> {
-                    Log.v("@@@","Drawer_About")
                     val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_ABOUT)
                     //replaceFragment(findFragment,AbautFragment(),TAG_FRAGMENT_ABOUT)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.Drawer_Settings -> {
-                    Log.v("@@@","Drawer_Settings")
                     val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_SETTINGS)
                     replaceFragment(findFragment, SettingsFragment(),TAG_FRAGMENT_SETTINGS)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.Drawer_exit -> {
-                    Log.v("@@@","Drawer_exit")
-                    AlertDialog.Builder(requireActivity()).also {
-                        it.setTitle("Выход")
-                            .setPositiveButton("Да"
-                            ) { dialog, which -> requireActivity().finishActivity(0) }
-                            .setNegativeButton("Нет",
-                            ){ dialog, which -> binding.drawerLayout.close()}
-                    }
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Выход")
+                        .setMessage("Хотите покинуть приложение?")
+                        .setPositiveButton("да"
+                        ) { dialog, which ->
+                            requireActivity().finish()
+                        }
+                        .setNegativeButton("нет"
+                        ) { dialog, which -> }
+                        .show()
                     return@setNavigationItemSelectedListener true
                 }
                 else -> return@setNavigationItemSelectedListener false

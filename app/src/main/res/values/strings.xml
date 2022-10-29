@@ -4,7 +4,7 @@
     <string name="about_app" translatable="false">О приложении</string>
 
     <!-- Drawer_layout. -->
-    <string name="description" translatable="false">Описание</string>
+    <string name="description" translatable="false">Приложение \"Прогноз погоды\"</string>
     <string name="exit" translatable="false">Выход</string>
     <string name="settings" translatable="false">Настройки</string>
     <string name="yes" translatable="false">Да</string>
