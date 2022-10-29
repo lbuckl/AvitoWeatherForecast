@@ -9,12 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
 import com.avito.avitoweatherforecast.utils.loadIconFromYandex
 import com.avito.avitoweatherforecast.utils.setWindDirection
+import com.avito.avitoweatherforecast.utils.toast
+import com.avito.avitoweatherforecast.viewmodel.WeatherAppState
+import com.avito.avitoweatherforecast.viewmodel.WeatherViewModel
 import com.gb.weather.view.weatherlist.FragmentWeatherDayRecyclerAdapter
 import com.gb.weather.view.weatherlist.FragmentWeatherWeekRecyclerAdapter
 
+/**
+ * Фрагмент отображения погоды
+ */
 class FragmentWeather:Fragment() {
 
     companion object {
@@ -56,7 +63,8 @@ class FragmentWeather:Fragment() {
                     binding.textViewCityName.text = "${city.country}, ${city.name}"
                     binding.weatherNowDataLayout.textViewTempValue.text = data.temperature.toString()
                     binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
-                    binding.weatherNowDataLayout.textViewWindValue.text = data.windSpeed.toString() + " м/с"
+                    binding.weatherNowDataLayout.textViewWindValue.text =
+                        "${data.windSpeed} ${requireContext().resources.getString(R.string.dim_mc)}"
                     binding.weatherNowDataLayout.imageViewWind.setWindDirection(data.windDirection)
                     binding.weatherNowDataLayout.imageView.loadIconFromYandex(data.icon)
                     binding.weatherDayRecyclerview.adapter = FragmentWeatherDayRecyclerAdapter(dataDay)
@@ -67,12 +75,15 @@ class FragmentWeather:Fragment() {
                 binding.progressBar.isVisible = true
             }
             is WeatherAppState.Error -> {
+                binding.root.toast(requireContext().resources.getString(R.string.error_weather_loading))
+            }
+            is WeatherAppState.Empty ->{
 
             }
-            else -> {}
         }
     }
 
+    //Поиск погоды по введённым данным
     private fun initialization(){
         binding.inputLayout.setEndIconOnClickListener {
             binding.inputEditText.text.toString().also { text ->

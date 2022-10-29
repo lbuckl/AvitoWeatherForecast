@@ -21,17 +21,17 @@ class GreetingsViewPagerAdapter(fragmentActivity: FragmentActivity, private val 
     }
 
     override fun createFragment(position: Int): Fragment {
-        when(position){
+        return when(position){
             0 -> {
-                return fragments[EARTH_FRAGMENT]
+                fragments[EARTH_FRAGMENT]
             }
             1 -> {
-               return fragments[MARS_FRAGMENT]
+                fragments[MARS_FRAGMENT]
             }
             2 -> {
-                return fragments[WEATHER_FRAGMENT]
+                fragments[WEATHER_FRAGMENT]
             }
-            else -> return fragments[EARTH_FRAGMENT]
+            else -> fragments[EARTH_FRAGMENT]
         }
     }
 }

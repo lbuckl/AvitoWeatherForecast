@@ -27,6 +27,7 @@ class GreetingsSecondFragment:Fragment() {
         return binding.root
     }
 
+    //Функция для анимации
     fun setTextVisible(){
         if (!binding.textView.isVisible){
             val fade = Fade().setDuration(VISIBLE_DELAY)

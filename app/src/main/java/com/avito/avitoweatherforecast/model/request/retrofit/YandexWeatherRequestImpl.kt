@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 /**
- * класс для запроса фото дня из API NASA
+ * класс для запроса данных из API Яндекс погоды
  * основная функция для запроса: getRetrofitImpl()
  */
 object YandexWeatherRequestImpl {
@@ -21,10 +21,12 @@ object YandexWeatherRequestImpl {
         .client(createOkHttpClient(PODInterceptor()))
         .build().create(YandexWeatherRequestInterface::class.java)
 
+    //Основная функция запроса данных
     fun getRetrofitImpl(): YandexWeatherRequestInterface {
         return podRetrofit
     }
 
+    //httpClient запроса
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(interceptor)
@@ -32,15 +34,16 @@ object YandexWeatherRequestImpl {
         return httpClient.build()
     }
 
+    //Перехватчик запросов
     class PODInterceptor : Interceptor {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             val response = chain.proceed(chain.request())
             when (response.code){
-                /*in 200..299 -> Log.v("okhttp@@@", "Request Success: ${response.code}")
-                in 300..399 -> Log.v("okhttp@@@", "Request Success: ${response.code}")
-                in 400..499 -> Log.v("okhttp@@@", "Request Error: ${response.code}")
-                in 500..599 -> Log.v("okhttp@@@", "Remote server error: ${response.code}")*/
+                in 200..299 -> Log.v("Develop_message_okhttp", "Request Success: ${response.code}")
+                in 300..399 -> Log.v("Develop_message_okhttp", "Request Success: ${response.code}")
+                in 400..499 -> Log.v("Develop_error_okhttp", "Request Error: ${response.code}")
+                in 500..599 -> Log.v("Develop_error_okhttp", "Remote server error: ${response.code}")
             }
             return response
         }

@@ -10,17 +10,20 @@ import com.avito.avitoweatherforecast.ui.greetings.GreetingsActivity
 import com.avito.avitoweatherforecast.utils.FIRST_ACTIVE
 import com.avito.avitoweatherforecast.utils.INITIALIZATION
 
+/**
+ * Основной класс активити приложения
+ */
 class MainActivity : AppCompatActivity() {
     init {
+        //Запрет поворота экрана
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        //setTheme(R.style.Theme_Dark)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Устанавливаем навигационный тулбар
         setSupportActionBar(findViewById(R.id.toolbar))
 
         //Проверяем показывали ли мы приветственное окно

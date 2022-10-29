@@ -7,7 +7,16 @@
     <string name="no" translatable="false">Нет</string>
     <string name="exit" translatable="false">Выход</string>
     <string name="settings" translatable="false">Настройки</string>
-    <string name="in_developing" translatable="false">В разработке</string>
+    <string name="in_develop" translatable="false">В разработке</string>
+    <string name="error_weather_loading" translatable="false">Ошибка загрузки погоды</string>
+    <string name="error_find_geolocation" translatable="false">Ошибка поиска геолокации</string>
+    <string name="do_you_want_exit" translatable="false">Вы хотите выйти?</string>
+    <string name="no_permission_geolocation" translatable="false">Отсутствует разрешение на поиск по геолокации</string>
+    <string name="geolocation" translatable="false">Геолокация</string>
+    <string name="access_to" translatable="false">Доступ к</string>
+    <string name="to_use_the_function" translatable="false">Для работы с функцией</string>
+    <string name="need_give_permission" translatable="false">необходимо дать соответствующее разрешение</string>
+    <string name="agree" translatable="false">Согласен</string>
 
     <!-- Строки для Greetings Fragment. -->
     <string name="greetings_first_text_first">Добро пожаловать в приложение "Прогноз погоды"</string>

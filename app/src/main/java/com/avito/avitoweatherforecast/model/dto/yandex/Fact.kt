@@ -31,7 +31,7 @@ data class Fact(
 )
 
 /**
- * condition
+condition
 clear — ясно.
 partly-cloudy — малооблачно.
 cloudy — облачно с прояснениями.
@@ -55,7 +55,7 @@ thunderstorm-with-hail — гроза с градом.
 
 
 /**
- * cloudness
+cloudness
 0 — ясно.
 0.25 — малооблачно.
 0.5 — облачно с прояснениями.

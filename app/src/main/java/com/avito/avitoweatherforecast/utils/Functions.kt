@@ -4,7 +4,10 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.view.Gravity
+import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -21,7 +24,30 @@ import com.avito.avitoweatherforecast.domain.WeatherData
 import com.avito.avitoweatherforecast.domain.WeatherFCData
 import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 
+/**
+ * Функция отображения сообщения по вью
+ */
+fun View.toast(message: String?) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).apply {
+        setGravity(Gravity.BOTTOM, 0, 250)
+        show()
+    }
+}
 
+/**
+ * Функция отображения сообщения
+ */
+fun showToast(message: String?) {
+    Toast.makeText(MyApp.getMyApp(), message, Toast.LENGTH_SHORT).apply {
+        setGravity(Gravity.BOTTOM, 0, 250)
+        show()
+    }
+}
+
+/**
+ * Функция преобразования запрошенных из API яндекс погоды данных
+ * в данные текущей погоды
+ */
 fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO): Weather {
     return Weather(
         City(
@@ -43,6 +69,10 @@ fun collectWeatherFromRequestData(city: City, weatherDTO: YandexWeatherDTO): Wea
     )
 }
 
+/**
+ * Функция преобразования запрошенных из API яндекс погоды данных
+ * в данные погоды за день
+ */
 private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<WeatherData>{
     return weatherDTO.forecasts[day].parts.let {
         listOf(
@@ -83,8 +113,11 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<Weat
     }
 }
 
+/**
+ * Функция преобразования запрошенных из API яндекс погоды данных
+ * в данные погоды за неделю
+ */
 fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
-
     val map = mutableListOf<WeatherFCData>()
     for (index in 0 until weatherDTO.forecasts.size){
         map.add(
@@ -97,9 +130,10 @@ fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
     return map.toList()
 }
 
-
+/**
+ * Функция загрузки SVG изображения из сайта ресурсов яндекс погоды
+ */
 fun ImageView.loadIconFromYandex(link: String?){
-
     //инцииализирем загрузчик
     val imageLoader = context?.let {
         ImageLoader.Builder(it)
@@ -120,6 +154,10 @@ fun ImageView.loadIconFromYandex(link: String?){
     imageLoader?.enqueue(request!!)
 }
 
+/**
+ * Функция сопоставляет данные о направления ветра и
+ * загружает в ImageView соответствующую иконку
+ */
 fun ImageView.setWindDirection(direction: String){
     when (direction){
         DIRECTION_NORTH -> load(R.drawable.ic_wind_n)
@@ -146,25 +184,22 @@ fun getSinglePermission(permissionName: String,
                         activity: Activity,
                         context: Context,
                         requereCode:Int):Boolean {
-    var textPermission = ""
-    when (permissionName){
-        (Manifest.permission.ACCESS_FINE_LOCATION) -> textPermission = "\"геолокация\""
-        (Manifest.permission.READ_CONTACTS) -> textPermission = "\"чтение контактов\""
-        (Manifest.permission.CALL_PHONE) -> textPermission = "\"вызовы\""
-    }
+    val resources = MyApp.getMyResources()
+    var textPermission = "\"${resources.getString(R.string.geolocation)}\""
+
 
     if (checkSinglePermission(permissionName)) {
         return true
         //Проверяем а не 2 ли это попытка запросить разрешение
     } else if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permissionName)){
         AlertDialog.Builder(context)
-            .setTitle("Доступ к функции $textPermission")
-            .setMessage("Для работы с функцией $textPermission нужно дать соответствующее разрешение")
-            .setPositiveButton("Логично") { _, _ ->
+            .setTitle("${resources.getString(R.string.access_to)} $textPermission")
+            .setMessage("${resources.getString(R.string.to_use_the_function)} $textPermission ${resources.getString(R.string.need_give_permission)}")
+            .setPositiveButton("${resources.getString(R.string.agree)}") { _, _ ->
                 permissionRequest(
                     arrayOf(permissionName),activity,requereCode)
             }
-            .setNegativeButton("Бред") { dialog, _ -> dialog.dismiss() }
+            .setNegativeButton("${resources.getString(R.string.no)}") { dialog, _ -> dialog.dismiss() }
             .create()
             .show()
         return checkSinglePermission(permissionName)

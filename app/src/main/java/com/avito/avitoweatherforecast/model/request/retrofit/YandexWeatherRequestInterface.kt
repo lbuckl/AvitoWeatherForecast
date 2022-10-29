@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
+/**
+ * Интерфейс формирования конечной ссылки для запроса
+ */
 interface YandexWeatherRequestInterface {
     @GET("/v2/forecast")
     fun getWeather(

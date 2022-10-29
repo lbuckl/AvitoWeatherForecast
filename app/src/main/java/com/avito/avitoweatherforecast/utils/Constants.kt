@@ -1,6 +1,10 @@
 package com.avito.avitoweatherforecast.utils
 
+//Наименование ключа API
 const val YANDEX_API_KEY_NAME = "X-Yandex-API-Key"
+
+//Колличество дней для запроса прогноза погоды (1-7)
+const val FORECAST_DAYS_NUM = 7
 
 //Константы направления ветра
 const val DIRECTION_NORTH = "n"

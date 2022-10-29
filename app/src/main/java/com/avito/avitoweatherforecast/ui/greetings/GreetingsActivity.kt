@@ -18,11 +18,12 @@ class GreetingsActivity: AppCompatActivity() {
         _binding = ActivityGreetingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Создаю фрагменты для пролистывания
-        val greetingsFirst= GreetingsFirstFragment()
+        //Фрагменты для пролистывания ViewPager
+        val greetingsFirst = GreetingsFirstFragment()
         val greetingsSecond = GreetingsSecondFragment()
         val greetingsTreeth = GreetingsThreethFragment()
 
+        //Список фрагментов для пролистывания ViewPager
         val fragments = arrayOf(
             greetingsFirst, greetingsSecond, greetingsTreeth)
 

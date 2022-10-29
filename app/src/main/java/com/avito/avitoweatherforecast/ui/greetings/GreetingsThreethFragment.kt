@@ -48,6 +48,7 @@ class GreetingsThreethFragment : Fragment() {
         }
     }
 
+    //Функция для анимации
     fun setTextVisible(){
         if (!binding.buttonStart.isVisible){
             coroutineScope.launch {
