@@ -62,3 +62,5 @@ data class WeatherFCData(
     val date: String,
     val weatherData: List<WeatherData>
 ): Parcelable
+
+

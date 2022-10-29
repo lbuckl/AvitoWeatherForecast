@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -119,10 +120,11 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<Weat
  */
 fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
     val map = mutableListOf<WeatherFCData>()
+    val deteFormat = FormatDate()
     for (index in 0 until weatherDTO.forecasts.size){
         map.add(
             WeatherFCData(
-            weatherDTO.forecasts[index].date,
+            deteFormat.getCustomDateFormat(weatherDTO.forecasts[index].date),
             listDTOtoWeatherDay(weatherDTO, index)
             )
         )

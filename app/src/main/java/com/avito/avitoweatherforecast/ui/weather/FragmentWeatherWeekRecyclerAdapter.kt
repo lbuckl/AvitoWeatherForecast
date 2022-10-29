@@ -17,8 +17,6 @@ import com.avito.avitoweatherforecast.utils.setWindDirection
 class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<WeatherFCData>):
     RecyclerView.Adapter<FragmentWeatherWeekRecyclerAdapter.WeatherWeekViewHolder>() {
 
-    val deteFormat = FormatDate()
-
     //Создаёт ViewHolder объект опираясь на их количество, но с запасом, чтобы можно было скролить
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherWeekViewHolder {
         val binding = FragmentWeatherFcWeekItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -48,7 +46,7 @@ class FragmentWeatherWeekRecyclerAdapter (private val weatherListCity:List<Weath
                     it.textView3.text = windSpeed.toString()
                 }
 
-                val splitDate = deteFormat.getCustomDateFormat(weatherItem.date).split("-")
+                val splitDate = weatherItem.date.split("-")
                 it.textViewPart.text = splitDate[0].toUpperCase()
                 it.textViewPart2.text = "${splitDate[1]} ${splitDate[2]}"
             }
