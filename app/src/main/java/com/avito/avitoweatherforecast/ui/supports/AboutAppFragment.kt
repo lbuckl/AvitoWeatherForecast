@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAboutAppBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * Фрагмент реализующий окно информации о приложении
@@ -22,6 +23,7 @@ class AboutAppFragment : Fragment() {
     ): View {
         _bindingSettings = FragmentAboutAppBinding.inflate(inflater)
         bindingSettings.textViewInDevelop.text = requireContext().resources.getText(R.string.in_develop)
+        requireActivity().findViewById<FloatingActionButton>(R.id.fab_menu).visibility = View.INVISIBLE
         return bindingSettings.root
     }
 

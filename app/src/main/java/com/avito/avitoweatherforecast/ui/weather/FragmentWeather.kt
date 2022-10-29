@@ -18,6 +18,7 @@ import com.avito.avitoweatherforecast.viewmodel.WeatherAppState
 import com.avito.avitoweatherforecast.viewmodel.WeatherViewModel
 import com.gb.weather.view.weatherlist.FragmentWeatherDayRecyclerAdapter
 import com.gb.weather.view.weatherlist.FragmentWeatherWeekRecyclerAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * Фрагмент отображения погоды
@@ -53,6 +54,12 @@ class FragmentWeather:Fragment() {
         binding.weatherDayRecyclerview.addItemDecoration(
             DividerItemDecoration(requireContext(),GridLayoutManager.HORIZONTAL)
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //Показываем кнопку, когда фрагмент активен
+        requireActivity().findViewById<FloatingActionButton>(R.id.fab_menu).visibility = View.VISIBLE
     }
 
     private fun renderData(weatherAppState: WeatherAppState){
