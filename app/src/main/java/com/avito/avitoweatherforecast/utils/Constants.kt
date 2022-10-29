@@ -30,6 +30,10 @@ const val PREF_SETTINGS = "PREF_SETTINGS"
 const val PREF_THEME_INT = "PREF_THEME_INT"
 const val THEME_LIGHT = 0
 const val THEME_DARK = 1
+//Настройки первого отображаемого города
+const val PREF_SETTINGS_LAST_CITY = "Last_City"
+const val PREF_SETTINGS_FAVORITE_CITY = "Favorite_City"
+const val PREF_SETTINGS_DEFAULT_CITY = "Moscow"
 
 //константы для работы боковой навигации
 const val TAG_FRAGMENT_ABOUT = "About_Fragment"

@@ -22,6 +22,7 @@ import androidx.transition.ChangeBounds
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
+import com.avito.avitoweatherforecast.MyApp
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
 import com.avito.avitoweatherforecast.ui.supports.SettingsFragment
@@ -63,6 +64,7 @@ class FragmentAppNavigation : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initFabMenu()
         initFabMyLocation()
+        initFabFavorite()
         inintMenu()
     }
 
@@ -224,6 +226,17 @@ class FragmentAppNavigation : Fragment() {
                     (R.drawable.ic_location)
                 )
             )
+        }
+    }
+
+    private fun initFabFavorite(){
+        binding.fabFavorite.setOnClickListener {
+            //получаем последнюю запрошенную локацию
+            val sharedPref = requireContext().getSharedPreferences(PREF_SETTINGS,Context.MODE_PRIVATE)
+            val lastCity =  sharedPref.getString(PREF_SETTINGS_LAST_CITY, PREF_SETTINGS_DEFAULT_CITY)
+            //записываем последнюю запрошенную локацию
+            val editor = sharedPref.edit()
+            editor.putString(PREF_SETTINGS_FAVORITE_CITY, lastCity).apply()
         }
     }
 
