@@ -9,9 +9,11 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -168,16 +170,15 @@ class FragmentAppNavigation : Fragment() {
                 locationManager =
                     requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    //locationManager теперь имеет доступ ко всем провайдерам по умолчанию
-                    //locationManager.getProvider(LocationManager.GPS_PROVIDER)
                     fabMyLocationLoading = true
                     animateLoadingGeolocation()
                     locationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
-                        2000L,
+                        0L,
                         0F, locationListener
                     )
                 }else{
+
                 }
             }
             else {
@@ -190,19 +191,16 @@ class FragmentAppNavigation : Fragment() {
 
     private val locationListener = LocationListener { location -> getAddress(location) }
 
-    fun getAddress(location: Location) {
+    private fun getAddress(location: Location) {
         locationManager.removeUpdates(locationListener)
         val geocoder = Geocoder(context, Locale("ru_RU"))
         val time = measureTimeMillis {
-            coroutineScope.launch {
                 val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                Log.v("@@@","${address.first().locality},${location.latitude}, ${location.longitude}")
+                Log.v("@@@","${address.first().locality}")
                 fabMyLocationLoading = false
                 fragmentWeather.getWeather(address.first().locality)
-
-            }.start()
         }
-        Log.d("@@@", "$time")
+        Log.d("@@@", "$time!!!")
     }
 
     private fun animateLoadingGeolocation(){
@@ -227,7 +225,6 @@ class FragmentAppNavigation : Fragment() {
                 )
             )
         }
-
     }
 
     private fun inintMenu() {

@@ -24,7 +24,6 @@ class WeatherViewModel(
     fun getWeatherByCity(cityName: String){
         liveData.postValue(WeatherAppState.Loading)
         val city = GeocoderRequest.getCoordinatesFromName(cityName)
-        Log.v("@@@","${city.name} ${city.lat} ${city.lon}")
 
         YandexWeatherRequestImpl.getRetrofitImpl().getWeather(
             BuildConfig.YANDEX_WEATHER_TRIAL_API_KEY, city.lat, city.lon,7,false,"ru_RU").enqueue(object :

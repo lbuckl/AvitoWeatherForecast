@@ -37,10 +37,10 @@ object YandexWeatherRequestImpl {
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             val response = chain.proceed(chain.request())
             when (response.code){
-                in 200..299 -> Log.v("okhttp@@@", "Request Success: ${response.code}")
+                /*in 200..299 -> Log.v("okhttp@@@", "Request Success: ${response.code}")
                 in 300..399 -> Log.v("okhttp@@@", "Request Success: ${response.code}")
                 in 400..499 -> Log.v("okhttp@@@", "Request Error: ${response.code}")
-                in 500..599 -> Log.v("okhttp@@@", "Remote server error: ${response.code}")
+                in 500..599 -> Log.v("okhttp@@@", "Remote server error: ${response.code}")*/
             }
             return response
         }

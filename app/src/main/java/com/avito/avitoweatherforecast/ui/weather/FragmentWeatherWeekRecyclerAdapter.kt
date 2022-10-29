@@ -1,14 +1,12 @@
 package com.gb.weather.view.weatherlist
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcWeekItemBinding
-import com.avito.avitoweatherforecast.domain.FormatDate
-import com.avito.avitoweatherforecast.domain.WeatherData
+import com.avito.avitoweatherforecast.utils.FormatDate
 import com.avito.avitoweatherforecast.domain.WeatherFCData
 import com.avito.avitoweatherforecast.utils.loadIconFromYandex
 import com.avito.avitoweatherforecast.utils.setWindDirection

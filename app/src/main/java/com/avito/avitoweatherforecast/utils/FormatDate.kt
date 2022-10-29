@@ -1,11 +1,7 @@
-package com.avito.avitoweatherforecast.domain
+package com.avito.avitoweatherforecast.utils
 
 import android.icu.text.SimpleDateFormat
 import android.icu.util.GregorianCalendar
-import android.icu.util.LocaleData
-import android.util.Log
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class FormatDate {
     private var simpleDateFormatDash: SimpleDateFormat = SimpleDateFormat("E-dd-MMM")
