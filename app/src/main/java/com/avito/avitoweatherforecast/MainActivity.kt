@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         //Проверяем показывали ли мы приветственное окно
         val isFirstActive = getSharedPreferences(INITIALIZATION, Context.MODE_PRIVATE)

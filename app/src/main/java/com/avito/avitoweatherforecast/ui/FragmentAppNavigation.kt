@@ -4,7 +4,6 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
@@ -22,6 +21,7 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
+import com.avito.avitoweatherforecast.ui.supports.SettingsFragment
 import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
 import com.avito.avitoweatherforecast.utils.*
 import kotlinx.coroutines.*
@@ -261,7 +261,7 @@ class FragmentAppNavigation : Fragment() {
                 R.id.Drawer_Settings -> {
                     Log.v("@@@","Drawer_Settings")
                     val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_SETTINGS)
-                    replaceFragment(findFragment,SettingsFragment(),TAG_FRAGMENT_SETTINGS)
+                    replaceFragment(findFragment, SettingsFragment(),TAG_FRAGMENT_SETTINGS)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.Drawer_exit -> {
