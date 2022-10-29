@@ -182,6 +182,7 @@ class FragmentAppNavigation : Fragment() {
                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                     fabMyLocationLoading = true
                     animateLoadingGeolocation()
+                    it.toast(requireContext().resources.getString(R.string.need_some_time))
                     locationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
                         0L,
@@ -246,6 +247,7 @@ class FragmentAppNavigation : Fragment() {
             //записываем последнюю запрошенную локацию
             val editor = sharedPref.edit()
             editor.putString(PREF_SETTINGS_FAVORITE_CITY, lastCity).apply()
+            it.toast(requireContext().resources.getString(R.string.location_added))
         }
     }
 
