@@ -27,6 +27,11 @@ object GeocoderRequest {
             Log.e("Developer_massage_error","${resources.getString(R.string.error_find_geolocation)}")
             showToast("${resources.getString(R.string.error_find_geolocation)}")
             null
+        }catch (e:NoSuchElementException){
+            e.printStackTrace()
+            Log.e("Developer_massage_error","${resources.getString(R.string.error_find_geolocation)}")
+            showToast("${resources.getString(R.string.error_find_geolocation)}")
+            null
         }
     }
 }

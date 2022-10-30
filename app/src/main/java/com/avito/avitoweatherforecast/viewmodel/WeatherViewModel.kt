@@ -40,12 +40,13 @@ class WeatherViewModel(
 
     //Функция получения данных погоды. Тригерит состояния WeatherAppState
     fun getWeatherByCity(cityName: String) {
-        liveData.postValue(WeatherAppState.Loading)
         //получаем координаты по наименованию локации
         val city = GeocoderRequest.getCoordinatesFromName(cityName)
         city?.let {
             getWeatherByLocation(it)
+            liveData.postValue(WeatherAppState.Loading)
         }
+
     }
 
     fun getWeatherByLocation(locate: City){
