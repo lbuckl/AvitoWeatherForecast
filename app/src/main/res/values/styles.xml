@@ -65,4 +65,10 @@
         <item name="android:layout_marginTop">@dimen/weather_fc_card_name_margin</item>
         <item name="android:layout_marginBottom">@dimen/weather_fc_card_name_margin</item>
     </style>
+
+    <!-- Fragment_weather_fc_header_layout -->
+    <style name="ChipAvitoStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+
+    </style>
 </resources>

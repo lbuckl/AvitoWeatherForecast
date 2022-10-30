@@ -4,10 +4,12 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -71,6 +73,7 @@ class FragmentAppNavigation : Fragment() {
         initFabMyLocation()
         initFabFavorite()
         inintMenu()
+        initChipAvito()
     }
 
     //region работа функциональных кнопок
@@ -326,6 +329,16 @@ class FragmentAppNavigation : Fragment() {
                 replace(binding.navigationContainer.id, findFragment, flag)
                     .commitAllowingStateLoss()
             }
+        }
+    }
+
+    //Инициализация работы чип кнопки поиска в авито
+    private fun initChipAvito(){
+        binding.chipAvito.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data =
+                    Uri.parse("https://www.avito.ru")
+            })
         }
     }
 

@@ -10,4 +10,5 @@
     <attr name="settingsBackground" format="color"/>
     <attr name="fabBackgroundColor" format="color"/>
     <attr format="reference" name="fab_icon"/>
+    <attr name="customBackgroundAvito" format="color"/>
 </resources>

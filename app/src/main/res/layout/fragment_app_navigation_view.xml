@@ -79,6 +79,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_location" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_avito"
+            style="@style/ChipAvitoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/chip_avito_height"
+            app:chipIconSize="@dimen/chip_avito_iconSize"
+            android:text="@string/find_in_avito"
+            app:chipIcon="@drawable/ic_avito"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_middle"
             android:layout_width="0dp"
@@ -104,5 +115,4 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/menu_drawer"/>
-
 </androidx.drawerlayout.widget.DrawerLayout>

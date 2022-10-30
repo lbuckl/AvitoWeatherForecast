@@ -43,4 +43,8 @@
     <dimen name="weather_fc_name_textSize">28sp</dimen>
     <dimen name="weather_fc_name_elevation">20dp</dimen>
     <dimen name="weather_fc_find_textSize">18sp</dimen>
+
+    <!-- Chip_avito_fc. -->
+    <dimen name="chip_avito_height">64dp</dimen>
+    <dimen name="chip_avito_iconSize">60dp</dimen>
 </resources>

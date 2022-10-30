@@ -56,5 +56,6 @@
     <string name="wind">Ветер</string>
     <string name="dim_mc">м/с</string>
     <string name="value_dim_mc">Значение,(м/с)</string>
+    <string name="find_in_avito">Найти в Авито</string>
 
 </resources>
