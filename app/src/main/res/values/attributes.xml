@@ -2,6 +2,7 @@
 <resources>
     <attr name="mainBackground" format="color"/>
     <attr name="navigationMenuBackground" format="color"/>
+    <attr name="customBackgroundTint" format="color"/>
     <attr name="customTextColor" format="color"/>
     <attr name="customEditTextColor" format="color"/>
     <attr name="customHintEditTextColor" format="color"/>

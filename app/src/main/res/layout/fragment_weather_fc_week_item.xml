@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/Widget.Material3.CardView.Elevated"
-    android:backgroundTint="@color/customColorBackgroundTint"
+    android:backgroundTint="?customBackgroundTint"
     app:contentPaddingTop="@dimen/fc_week_item_card_padding"
     app:contentPaddingBottom="@dimen/fc_week_item_card_padding">
 

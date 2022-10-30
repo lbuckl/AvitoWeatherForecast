@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.Material3.CardView.Elevated"
-            android:backgroundTint="@color/customColorBackgroundTint"
+            android:backgroundTint="?customBackgroundTint"
             app:cardCornerRadius="@dimen/weather_fc_card_name_cornerRadius">
 
             <TextView
@@ -76,7 +76,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/weather_fc_header_margin_top"
         android:hint="@string/find_city"
-        android:textColorHint="@color/bluePrimary"
+        android:textColorHint="?customTextColor"
+        app:hintTextAppearance="?customTextColor"
         app:endIconCheckable="true"
         app:endIconDrawable="@drawable/ic_send_v2"
         app:endIconMode="custom"
@@ -87,12 +88,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_edit_text"
+            style="@style/WeatherHeaderTempInputTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/customColorBackground"
-            android:backgroundTint="@color/customColorBackgroundTint"
-            android:inputType="text"
-            android:textSize="@dimen/weather_fc_find_textSize" />
+            android:backgroundTint="?customBackgroundTint"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView

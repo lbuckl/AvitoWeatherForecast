@@ -49,6 +49,13 @@
         <item name="android:textSize">38sp</item>
     </style>
 
+    <style name="WeatherHeaderTempInputTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?customTextColor</item>
+        <item name="android:background">@color/customColorBackground</item>
+        <item name="android:backgroundTint">?customBackgroundTint</item>
+    </style>
+
     <!-- Fragment_weather_fc_location_name-->
     <style name="WeatherLocationTextStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">28sp</item>
