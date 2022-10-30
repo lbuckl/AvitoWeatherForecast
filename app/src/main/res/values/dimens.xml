@@ -40,7 +40,7 @@
     <dimen name="weather_fc_toolbar_height">2dp</dimen>
     <dimen name="weather_fc_card_name_paddingTop">8dp</dimen>
     <dimen name="weather_fc_card_name_paddingBottom">12dp</dimen>
-    <dimen name="weather_fc_card_name_cornerRadius">8dp</dimen>
+    <dimen name="weather_fc_card_name_cornerRadius">2dp</dimen>
     <dimen name="weather_fc_name_textSize">28sp</dimen>
     <dimen name="weather_fc_name_elevation">20dp</dimen>
     <dimen name="weather_fc_find_textSize">18sp</dimen>

@@ -19,10 +19,7 @@ import coil.load
 import coil.request.ImageRequest
 import com.avito.avitoweatherforecast.MyApp
 import com.avito.avitoweatherforecast.R
-import com.avito.avitoweatherforecast.domain.City
-import com.avito.avitoweatherforecast.domain.Weather
-import com.avito.avitoweatherforecast.domain.WeatherData
-import com.avito.avitoweatherforecast.domain.WeatherFCData
+import com.avito.avitoweatherforecast.domain.*
 import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 
 /**
@@ -131,6 +128,11 @@ fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
     }
     return map.toList()
 }
+
+fun WeatherDtoToWeather(weatherDTO: YandexWeatherDTO) {
+
+}
+
 
 /**
  * Функция загрузки SVG изображения из сайта ресурсов яндекс погоды

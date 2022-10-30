@@ -6,6 +6,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/weather_fc_appbar"
+        android:background="@color/customColorBackground"
+        android:foregroundTint="@color/customColorBackgroundTint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/appbar"
@@ -48,18 +50,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentPaddingTop="@dimen/weather_fc_card_name_paddingTop"
-            app:contentPaddingBottom="@dimen/weather_fc_card_name_paddingBottom"
-            app:cardCornerRadius="@dimen/weather_fc_card_name_cornerRadius"
-            app:cardUseCompatPadding="true">
+            style="@style/Widget.Material3.CardView.Elevated"
+            android:backgroundTint="@color/customColorBackgroundTint"
+            app:cardCornerRadius="@dimen/weather_fc_card_name_cornerRadius">
 
             <TextView
                 android:id="@+id/textView_city_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="@dimen/weather_fc_name_textSize"
                 android:gravity="center"
                 android:elevation="@dimen/weather_fc_name_elevation"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_anchor="@id/weather_fc_appbar"
                 app:layout_anchorGravity="bottom"
                 app:divider="@drawable/linear_layout_divider"
@@ -75,22 +78,23 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/weather_fc_header_margin_top"
         android:hint="@string/find_city"
-        android:textColorHint="?colorSecondaryVariant"
+        android:textColorHint="@color/bluePrimary"
         app:endIconCheckable="true"
-        app:endIconDrawable="@android:drawable/ic_menu_send"
+        app:endIconDrawable="@drawable/ic_send_v2"
         app:endIconMode="custom"
         app:endIconTintMode="src_in"
-        app:hintTextColor="?colorSecondaryVariant"
         app:layout_constraintEnd_toStartOf="@+id/wiki_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_edit_text"
-            android:textSize="@dimen/weather_fc_find_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:background="@color/customColorBackground"
+            android:backgroundTint="@color/customColorBackgroundTint"
+            android:inputType="text"
+            android:textSize="@dimen/weather_fc_find_textSize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView

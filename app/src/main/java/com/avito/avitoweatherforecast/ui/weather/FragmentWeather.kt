@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
 import com.avito.avitoweatherforecast.utils.loadIconFromYandex
@@ -53,6 +54,10 @@ class FragmentWeather:Fragment() {
 
         binding.weatherDayRecyclerview.addItemDecoration(
             DividerItemDecoration(requireContext(),GridLayoutManager.HORIZONTAL)
+        )
+
+        binding.weatherFcWeekRecyclerview.addItemDecoration(
+            DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL)
         )
     }
 

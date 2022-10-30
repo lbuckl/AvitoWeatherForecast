@@ -13,9 +13,15 @@
     <color name="colorAccent40Alfa">#6603DAC5</color>
     <color name="generalHintTextColor">#8C8C8C</color>
 
-    <!-- Theme.AvitoWeatherForecast. -->
-    <color name="customColorBackground">#C7E2FA</color>
-    <color name="customColorBackgroundTint">#D8E9F8</color>
+    <!-- Theme.AvitoWeatherForecast -->
+    <color name="customColorBackground">#C8D9F8</color>
+    <color name="customColorBackgroundTint">#C8D9F8</color>
+
+    <!-- RedStyle. -->
+    <color name="redPrimary">#EE0083</color>
+    <color name="redPrimaryVariant">#F3244E</color>
+    <color name="redSecondaryVariant">#BF062C</color>
+    <color name="redBack">#FAB4B4</color>
 
     <!-- SpaceStyle. -->
     <color name="bluePrimary">#043C6B</color>
