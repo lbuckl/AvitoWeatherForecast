@@ -15,6 +15,7 @@ import java.io.IOException
  */
 object YandexWeatherRequestImpl {
     private const val baseUrl = "https://api.weather.yandex.ru/"
+
     private val podRetrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))

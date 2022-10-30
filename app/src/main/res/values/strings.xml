@@ -19,6 +19,7 @@
     <string name="agree" translatable="false">Согласен</string>
     <string name="need_some_time" translatable="false">Подождите немного</string>
     <string name="location_added" translatable="false">Локация добавлена</string>
+    <string name="application_error" translatable="false">Ошибка приложения</string>
 
     <!-- Строки для Greetings Fragment. -->
     <string name="greetings_first_text_first">Добро пожаловать в приложение "Прогноз погоды"</string>

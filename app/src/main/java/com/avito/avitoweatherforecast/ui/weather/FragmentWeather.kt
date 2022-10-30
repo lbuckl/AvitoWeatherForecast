@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentWeatherFcBinding
+import com.avito.avitoweatherforecast.domain.City
 import com.avito.avitoweatherforecast.utils.loadIconFromYandex
 import com.avito.avitoweatherforecast.utils.setWindDirection
 import com.avito.avitoweatherforecast.utils.toast
@@ -88,6 +89,7 @@ class FragmentWeather:Fragment() {
                 binding.progressBar.isVisible = true
             }
             is WeatherAppState.Error -> {
+                binding.progressBar.isVisible = false
                 binding.root.toast(requireContext().resources.getString(R.string.error_weather_loading))
             }
             is WeatherAppState.Empty ->{
@@ -107,8 +109,12 @@ class FragmentWeather:Fragment() {
         }
     }
 
-    //Не приватная, потому что необходимо
-    fun getWeather(text:String){
+    private fun getWeather(text:String){
         viewModel.getWeatherByCity(text)
+    }
+
+    //Не приватная, потому что для внешнего запроса через ViewModel
+    fun getWeatherByLocation(lat:Double,lon:Double){
+        viewModel.getWeatherByLocation(City("","",lat,lon))
     }
 }

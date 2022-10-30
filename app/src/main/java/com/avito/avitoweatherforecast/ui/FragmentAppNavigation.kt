@@ -9,6 +9,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,11 +23,13 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
+import com.avito.avitoweatherforecast.model.request.geoposition.GeocoderRequest
 import com.avito.avitoweatherforecast.ui.supports.AboutAppFragment
 import com.avito.avitoweatherforecast.ui.supports.SettingsFragment
 import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
 import com.avito.avitoweatherforecast.utils.*
 import kotlinx.coroutines.*
+import java.io.IOException
 import java.util.*
 
 /**
@@ -54,7 +57,7 @@ class FragmentAppNavigation : Fragment() {
         setHasOptionsMenu(true)
         _binding = FragmentAppNavigationViewBinding.inflate(inflater)
 
-        //Подгружаем
+        //Подгружаем начальный фрагмент
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(binding.navigationContainer.id, fragmentWeather,TAG_WEATHER_FRAGMENT)
             .commit()
@@ -63,6 +66,7 @@ class FragmentAppNavigation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Инициализация функциональных кнопок и пунктов меню NavigationView
         initFabMenu()
         initFabMyLocation()
         initFabFavorite()
@@ -93,20 +97,21 @@ class FragmentAppNavigation : Fragment() {
                     )
                 }
             } else {
+                //Измененение позиции кнопок
                 changeSetFAB(false)
-                coroutineScope.launch {
-                    delay(FAB_ANIMATION_DURATION / 3)
-                    binding.fabFavorite.visibility = View.INVISIBLE
-                    delay(FAB_ANIMATION_DURATION / 3)
-                    binding.fabMyLocation.visibility = View.INVISIBLE
-                }
+                    coroutineScope.launch {
+                        delay(FAB_ANIMATION_DURATION / 3)
+                        binding.fabFavorite.visibility = View.INVISIBLE
+                        delay(FAB_ANIMATION_DURATION / 3)
+                        binding.fabMyLocation.visibility = View.INVISIBLE
+                    }
 
-                binding.fabMenu.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        (R.drawable.ic_menu)
+                    binding.fabMenu.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            (R.drawable.ic_menu)
+                        )
                     )
-                )
             }
         }
     }
@@ -117,6 +122,8 @@ class FragmentAppNavigation : Fragment() {
      * функция универсальная, для добавления новой кнопки достаточно
      * вписать её в лист "buttons"
      * ВАЖНО!!! Первой в списке идёт кнопка меню
+     * _____________________________________________________________
+     * Возвращает результат работы: true - удачно, false - ошибка
      */
     private fun changeSetFAB(show: Boolean){
         val buttons = listOf(
@@ -131,28 +138,39 @@ class FragmentAppNavigation : Fragment() {
         ConstraintSet().apply {
         clone(binding.containLayout)
             // Разворачиваем/сворачиваем кнопки меню
-            if (show){//привязываем каждую последующую кнопку к предыдущей
-                for (i in 1 until buttons.size){
-                    this.clear(buttons[i].id, ConstraintSet.BOTTOM)
-                    this.connect(buttons[i].id,
-                        ConstraintSet.BOTTOM,
-                        buttons[i-1].id,
-                        ConstraintSet.TOP,
-                        8)
+
+            try {
+                if (show){//привязываем каждую последующую кнопку к предыдущей
+                    for (i in 1 until buttons.size){
+                        this.clear(buttons[i].id, ConstraintSet.BOTTOM)
+                        this.connect(buttons[i].id,
+                            ConstraintSet.BOTTOM,
+                            buttons[i-1].id,
+                            ConstraintSet.TOP,
+                            8)
+                    }
                 }
-            }
-            else{ //привязываем все кнопки к низу экрана
-                for (i in 1 until buttons.size) {
-                    this.clear(buttons[i].id, ConstraintSet.BOTTOM)
-                    this.connect(
-                        buttons[i].id,
-                        ConstraintSet.BOTTOM,
-                        binding.containLayout.id,
-                        ConstraintSet.BOTTOM,
-                        8
-                    )
+                else{ //привязываем все кнопки к низу экрана
+                    for (i in 1 until buttons.size) {
+                        this.clear(buttons[i].id, ConstraintSet.BOTTOM)
+                        this.connect(
+                            buttons[i].id,
+                            ConstraintSet.BOTTOM,
+                            binding.containLayout.id,
+                            ConstraintSet.BOTTOM,
+                            8
+                        )
+                    }
                 }
+            }catch (e: IndexOutOfBoundsException){
+                e.printStackTrace()
+                Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                showToast("${resources.getString(R.string.application_error)}")
+            }finally {
+                binding.fabFavorite.visibility = View.INVISIBLE
+                binding.fabMyLocation.visibility = View.INVISIBLE
             }
+
 
             TransitionManager.beginDelayedTransition(
                 binding.containLayout,
@@ -173,13 +191,28 @@ class FragmentAppNavigation : Fragment() {
                     requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                     fabMyLocationLoading = true
+                    it.isClickable = false
                     animateLoadingGeolocation()
                     it.toast(requireContext().resources.getString(R.string.need_some_time))
-                    locationManager.requestLocationUpdates(
-                        LocationManager.GPS_PROVIDER,
-                        0L,
-                        0F, locationListener
-                    )
+
+                    try {
+                        locationManager.requestLocationUpdates(
+                            LocationManager.GPS_PROVIDER,
+                            0L,
+                            0F, locationListener
+                        )
+                    }catch (e: IOException){
+                        e.printStackTrace()
+                        Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                        showToast("${resources.getString(R.string.application_error)}")
+                        fabMyLocationLoading = false
+                        it.isClickable = true
+                    }catch (e: IllegalArgumentException){
+                        Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                        showToast("${resources.getString(R.string.application_error)}")
+                        fabMyLocationLoading = false
+                        it.isClickable = true
+                    }
                 }else{
                     showToast(requireContext().resources.getString(R.string.no_permission_geolocation))
                 }
@@ -198,11 +231,11 @@ class FragmentAppNavigation : Fragment() {
     private fun getAddress(location: Location) {
         //Если геоданные получены, то отключаем подписку
         locationManager.removeUpdates(locationListener)
+        fabMyLocationLoading = false
+        binding.fabMyLocation.isClickable = true
+
         //Выдаём запрос во ViewModel на поиск погоды в найденной локации
-        val geocoder = Geocoder(context, Locale("ru_RU"))
-                val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                fabMyLocationLoading = false
-                fragmentWeather.getWeather(address.first().locality)
+        fragmentWeather.getWeatherByLocation(location.latitude,location.longitude)
     }
 
     //Функция анимации кнопки (кнопка крутится пока идёт запрос геолокации)
@@ -244,7 +277,7 @@ class FragmentAppNavigation : Fragment() {
         }
     }
 
-    //Функция реализации бокового меню Drawer+NavigationView
+    //Работа бокового меню Drawer+NavigationView
     private fun inintMenu() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId){

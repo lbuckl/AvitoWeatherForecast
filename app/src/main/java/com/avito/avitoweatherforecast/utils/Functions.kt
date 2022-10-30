@@ -1,10 +1,8 @@
 package com.avito.avitoweatherforecast.utils
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -12,14 +10,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
 import coil.request.ImageRequest
 import com.avito.avitoweatherforecast.MyApp
 import com.avito.avitoweatherforecast.R
-import com.avito.avitoweatherforecast.domain.*
+import com.avito.avitoweatherforecast.domain.City
+import com.avito.avitoweatherforecast.domain.Weather
+import com.avito.avitoweatherforecast.domain.WeatherData
+import com.avito.avitoweatherforecast.domain.WeatherFCData
 import com.avito.avitoweatherforecast.model.dto.yandex.YandexWeatherDTO
 
 /**

@@ -3,8 +3,6 @@ package com.avito.avitoweatherforecast.utils
 import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.icu.util.GregorianCalendar
-import android.icu.util.TimeZone
-import android.util.Log
 
 class FormatDate {
     @SuppressLint("SimpleDateFormat")
