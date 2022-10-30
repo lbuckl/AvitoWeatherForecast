@@ -17,13 +17,7 @@
     <color name="customColorBackground">#C8D9F8</color>
     <color name="customColorBackgroundTint">#C8D9F8</color>
 
-    <!-- RedStyle. -->
-    <color name="redPrimary">#EE0083</color>
-    <color name="redPrimaryVariant">#F3244E</color>
-    <color name="redSecondaryVariant">#BF062C</color>
-    <color name="redBack">#FAB4B4</color>
-
-    <!-- SpaceStyle. -->
+    <!-- DarkStyle. -->
     <color name="bluePrimary">#043C6B</color>
     <color name="bluePrimaryVariant">#0B5FA5</color>
     <color name="blueSecondaryVariant">#3F8FD2</color>

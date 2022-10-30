@@ -1,6 +1,5 @@
 package com.avito.avitoweatherforecast.ui.supports
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentSettingsBinding
-import com.avito.avitoweatherforecast.ui.greetings.GreetingsActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**

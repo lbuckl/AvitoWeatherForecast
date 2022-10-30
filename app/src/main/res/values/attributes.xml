@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="mainBackground" format="color"/>
     <attr name="navigationMenuBackground" format="color"/>
     <attr name="customBackgroundTint" format="color"/>
     <attr name="customTextColor" format="color"/>
     <attr name="customEditTextColor" format="color"/>
     <attr name="customHintEditTextColor" format="color"/>
-    <attr name="customSecondColor" format="color"/>
     <attr name="settingsBackground" format="color"/>
     <attr name="fabBackgroundColor" format="color"/>
-    <attr format="reference" name="fab_icon"/>
     <attr name="customBackgroundAvito" format="color"/>
 </resources>

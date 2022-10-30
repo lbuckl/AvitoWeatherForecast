@@ -1,8 +1,5 @@
 package com.avito.avitoweatherforecast.ui.greetings
 
-import android.graphics.RenderEffect
-import android.graphics.Shader
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

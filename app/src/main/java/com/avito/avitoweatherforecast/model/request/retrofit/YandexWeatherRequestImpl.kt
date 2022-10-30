@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 /**
- * класс для запроса данных из API Яндекс погоды
+ * Объект для запроса данных из API Яндекс погоды
  * основная функция для запроса: getRetrofitImpl()
  */
 object YandexWeatherRequestImpl {
@@ -35,7 +35,7 @@ object YandexWeatherRequestImpl {
         return httpClient.build()
     }
 
-    //Перехватчик запросов
+    //Перехватчик запросов, позволяет обрабатывать результаты запроса
     class PODInterceptor : Interceptor {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {

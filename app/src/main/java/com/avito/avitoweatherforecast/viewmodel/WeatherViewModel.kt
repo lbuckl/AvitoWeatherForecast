@@ -18,7 +18,6 @@ import retrofit2.Response
 
 /**
  * Вью Модель для фрагментов прогноза погоды
- *
  */
 class WeatherViewModel(
     private val liveData: MutableLiveData<WeatherAppState> = MutableLiveData<WeatherAppState>()
@@ -39,7 +38,7 @@ class WeatherViewModel(
         liveData
     }
 
-    //Функция получения данных погоды. Тригерит состояния WeatherAppState
+    //Функция формирования данных запроса в формате City для запроса погоды
     fun getWeatherByLocationName(cityName: String) {
         //получаем координаты по наименованию локации
         val city = GeocoderRequest.getCoordinatesFromName(cityName)
@@ -49,6 +48,7 @@ class WeatherViewModel(
         }
     }
 
+    //Функция запроса погоды по данным локации
     fun getWeatherByLocation(locate: City){
         //Получаем данные и формируем состояния WeatherAppState
         YandexWeatherRequestImpl.getRetrofitImpl().getWeather(

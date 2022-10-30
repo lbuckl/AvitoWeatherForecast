@@ -5,6 +5,9 @@
     <!-- View_pager greetings. -->
     <dimen name="view_pager_navi_points_margin_start">8dp</dimen>
     <dimen name="view_pager_navi_points_margin_bottom">48dp</dimen>
+    <dimen name="greeting_text_marginStart">4dp</dimen>
+    <dimen name="greetings_first_textSize">22sp</dimen>
+    <dimen name="greetings_second_textSize">22sp</dimen>
 
     <!-- Фрагмент Settings. -->
     <dimen name="settingsGeneralMargin">8dp</dimen>
@@ -47,7 +50,4 @@
     <!-- Chip_avito_fc. -->
     <dimen name="chip_avito_height">64dp</dimen>
     <dimen name="chip_avito_iconSize">60dp</dimen>
-    <dimen name="greeting_text_marginStart">4dp</dimen>
-    <dimen name="greetings_first_textSize">22sp</dimen>
-    <dimen name="greetings_second_textSize">22sp</dimen>
 </resources>

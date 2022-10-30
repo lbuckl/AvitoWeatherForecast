@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -25,14 +24,12 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.databinding.FragmentAppNavigationViewBinding
-import com.avito.avitoweatherforecast.model.request.geoposition.GeocoderRequest
 import com.avito.avitoweatherforecast.ui.supports.AboutAppFragment
 import com.avito.avitoweatherforecast.ui.supports.SettingsFragment
 import com.avito.avitoweatherforecast.ui.weather.FragmentWeather
 import com.avito.avitoweatherforecast.utils.*
 import kotlinx.coroutines.*
 import java.io.IOException
-import java.util.*
 
 /**
  * Основной фрагмент навигации приложения

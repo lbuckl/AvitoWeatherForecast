@@ -10,13 +10,14 @@ import java.io.IOException
 import java.util.*
 
 /**
- * Класс рабоот с геолокацией
+ * Объект рабоот с геолокацией
  * Основная функция getCoordinatesFromName возвращает данные о местоположении
  */
 object GeocoderRequest {
     private val resources: Resources = MyApp.getMyResources()
     private val context = MyApp.getMyApp()
     private val geocoder = Geocoder(context, Locale("ru_RU"))
+
     //Функция получения координат по наименовании локации
     fun getCoordinatesFromName(name:String):City?{
         return try {
