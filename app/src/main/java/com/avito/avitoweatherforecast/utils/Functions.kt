@@ -33,7 +33,7 @@ fun View.toast(message: String?) {
 }
 
 /**
- * Функция отображения сообщения
+ * Функция отображения сообщения в активити
  */
 fun showToast(message: String?) {
     Toast.makeText(MyApp.getMyApp(), message, Toast.LENGTH_SHORT).apply {
@@ -42,6 +42,7 @@ fun showToast(message: String?) {
     }
 }
 
+//region преобразование данных с API WeatherDTO в данные погоды Weather
 /**
  * Функция преобразования запрошенных из API яндекс погоды данных
  * в данные текущей погоды
@@ -106,8 +107,7 @@ private fun listDTOtoWeatherDay(weatherDTO: YandexWeatherDTO, day:Int):List<Weat
                 it.evening.windSpeed,
                 it.evening.windDir
             ),
-        )    
-        
+        )
     }
 }
 
@@ -128,10 +128,7 @@ fun listDTOtoWeatherWeek(weatherDTO: YandexWeatherDTO):List<WeatherFCData>{
     }
     return map.toList()
 }
-
-fun WeatherDtoToWeather(weatherDTO: YandexWeatherDTO) {
-
-}
+//endregion
 
 
 /**

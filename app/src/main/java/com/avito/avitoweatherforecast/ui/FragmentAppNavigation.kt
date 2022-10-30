@@ -72,8 +72,6 @@ class FragmentAppNavigation : Fragment() {
     //region работа функциональных кнопок
     //Функция работы всплывания и исчезания функциональных кнопок
     private fun initFabMenu() {
-        var buttonUpFlag = true //флаг состояния кнопки
-
         //формат анимации для скрытия появления
         val fade = Fade().setDuration(FAB_ANIMATION_DURATION)
         TransitionManager.beginDelayedTransition(binding.root, fade)
@@ -82,8 +80,6 @@ class FragmentAppNavigation : Fragment() {
         binding.fabMenu.setOnClickListener {
             if (!binding.fabMyLocation.isVisible) {
                 binding.fabFavorite.visibility = View.VISIBLE
-                changeSetFAB(true)
-
                 binding.fabMyLocation.visibility = View.VISIBLE
                 changeSetFAB(true)
 
@@ -96,7 +92,6 @@ class FragmentAppNavigation : Fragment() {
                         )
                     )
                 }
-                buttonUpFlag = !buttonUpFlag
             } else {
                 changeSetFAB(false)
                 coroutineScope.launch {
@@ -112,48 +107,45 @@ class FragmentAppNavigation : Fragment() {
                         (R.drawable.ic_menu)
                     )
                 )
-                buttonUpFlag = !buttonUpFlag
             }
         }
     }
 
-    //Функция изменения положений выпливающих кнопок меню
-    private fun changeSetFAB(isUp: Boolean) {
-        //для изменения положение
+    /**
+     * Функция изменения положений выпливающих кнопок меню
+     * @param show - указатель того, развернуть меню или свернуть
+     * функция универсальная, для добавления новой кнопки достаточно
+     * вписать её в лист "buttons"
+     * ВАЖНО!!! Первой в списке идёт кнопка меню
+     */
+    private fun changeSetFAB(show: Boolean){
+        val buttons = listOf(
+            binding.fabMenu,
+            binding.fabFavorite,
+            binding.fabMyLocation
+        )
+        //для изменения положения
         val changeBounds = ChangeBounds()
         changeBounds.duration = FAB_ANIMATION_DURATION
+
         ConstraintSet().apply {
-            clone(binding.containLayout)
-            binding.fabFavorite.id.let {
-                if (isUp) {
-                    this.clear(it, ConstraintSet.BOTTOM)
-                    this.connect(it, ConstraintSet.BOTTOM, binding.fabMenu.id, ConstraintSet.TOP, 8)
-                } else {
-                    this.clear(it, ConstraintSet.BOTTOM)
-                    this.connect(
-                        it,
+        clone(binding.containLayout)
+            // Разворачиваем/сворачиваем кнопки меню
+            if (show){//привязываем каждую последующую кнопку к предыдущей
+                for (i in 1 until buttons.size){
+                    this.clear(buttons[i].id, ConstraintSet.BOTTOM)
+                    this.connect(buttons[i].id,
                         ConstraintSet.BOTTOM,
-                        binding.containLayout.id,
-                        ConstraintSet.BOTTOM,
-                        8
-                    )
+                        buttons[i-1].id,
+                        ConstraintSet.TOP,
+                        8)
                 }
             }
-
-            binding.fabMyLocation.id.let {
-                if (isUp) {
-                    this.clear(it, ConstraintSet.BOTTOM)
+            else{ //привязываем все кнопки к низу экрана
+                for (i in 1 until buttons.size) {
+                    this.clear(buttons[i].id, ConstraintSet.BOTTOM)
                     this.connect(
-                        it,
-                        ConstraintSet.BOTTOM,
-                        binding.fabFavorite.id,
-                        ConstraintSet.TOP,
-                        8
-                    )
-                } else {
-                    this.clear(it, ConstraintSet.BOTTOM)
-                    this.connect(
-                        it,
+                        buttons[i].id,
                         ConstraintSet.BOTTOM,
                         binding.containLayout.id,
                         ConstraintSet.BOTTOM,
@@ -171,9 +163,9 @@ class FragmentAppNavigation : Fragment() {
     }
     //endregion
 
+    //region поиск погоды по текущей геолокации
     //Функция поиска погоды по текущей геолокации
     private fun initFabMyLocation(){
-
         //подписка на получение геоданных
         binding.fabMyLocation.setOnClickListener {
             if (checkSinglePermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -237,6 +229,7 @@ class FragmentAppNavigation : Fragment() {
             )
         }
     }
+    //endregion
 
     //Функция записи текущего города как "любимого"
     private fun initFabFavorite(){
@@ -278,7 +271,6 @@ class FragmentAppNavigation : Fragment() {
                             ) { dialog, which -> }
                             .show()
                     }
-
                     return@setNavigationItemSelectedListener true
                 }
                 else -> return@setNavigationItemSelectedListener false
