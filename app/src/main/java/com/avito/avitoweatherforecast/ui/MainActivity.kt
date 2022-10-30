@@ -1,11 +1,11 @@
-package com.avito.avitoweatherforecast
+package com.avito.avitoweatherforecast.ui
 
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.avito.avitoweatherforecast.ui.FragmentAppNavigation
+import com.avito.avitoweatherforecast.R
 import com.avito.avitoweatherforecast.ui.greetings.GreetingsActivity
 import com.avito.avitoweatherforecast.utils.FIRST_ACTIVE
 import com.avito.avitoweatherforecast.utils.INITIALIZATION

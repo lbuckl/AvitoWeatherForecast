@@ -110,7 +110,7 @@ class FragmentWeather:Fragment() {
     }
 
     private fun getWeather(text:String){
-        viewModel.getWeatherByCity(text)
+        viewModel.getWeatherByLocationName(text)
     }
 
     //Не приватная, потому что для внешнего запроса через ViewModel

@@ -17,7 +17,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Модель для фрагментов прогноза погоды
+ * Вью Модель для фрагментов прогноза погоды
+ *
  */
 class WeatherViewModel(
     private val liveData: MutableLiveData<WeatherAppState> = MutableLiveData<WeatherAppState>()
@@ -31,7 +32,7 @@ class WeatherViewModel(
         //Получение имени любимой локации
         val lastCity =
             SharedPreference.getString(PREF_SETTINGS_FAVORITE_CITY, PREF_SETTINGS_DEFAULT_CITY)
-        getWeatherByCity(lastCity!!)
+        getWeatherByLocationName(lastCity!!)
     }
 
     val getLiveData = {
@@ -39,7 +40,7 @@ class WeatherViewModel(
     }
 
     //Функция получения данных погоды. Тригерит состояния WeatherAppState
-    fun getWeatherByCity(cityName: String) {
+    fun getWeatherByLocationName(cityName: String) {
         //получаем координаты по наименованию локации
         val city = GeocoderRequest.getCoordinatesFromName(cityName)
         city?.let {
