@@ -48,7 +48,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
-                android:textSize="@dimen/fc_week_item_textSize" />
+                style="@style/WeatherWeekItemTextStyle" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:text="@string/dim_g_c"
                 android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
-                android:textSize="@dimen/fc_week_item_textSize" />
+                style="@style/WeatherWeekItemTextStyle" />
         </LinearLayout>
 
 
@@ -78,7 +78,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
-                android:textSize="@dimen/fc_week_item_textSize"/>
+                style="@style/WeatherWeekItemTextStyle"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:text="@string/dim_mc"
                 android:layout_marginStart="@dimen/fc_week_item_descr_marginStart"
-                android:textSize="@dimen/fc_week_item_textSize" />
+                style="@style/WeatherWeekItemTextStyle" />
         </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -105,14 +105,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="@dimen/fc_week_item_textSize" />
+                style="@style/WeatherWeekItemTextStyle" />
 
             <TextView
                 android:id="@+id/textView_part2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="@dimen/fc_week_item_textSize" />
+                style="@style/WeatherWeekItemTextStyle" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -125,5 +125,4 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

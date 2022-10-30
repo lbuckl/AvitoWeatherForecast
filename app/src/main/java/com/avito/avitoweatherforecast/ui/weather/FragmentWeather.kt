@@ -73,7 +73,8 @@ class FragmentWeather:Fragment() {
                 with(weatherAppState.weather){
                     binding.progressBar.isVisible = false
                     binding.textViewCityName.text = "${city.country}, ${city.name}"
-                    binding.weatherNowDataLayout.textViewTempValue.text = data.temperature.toString()
+                    binding.weatherNowDataLayout.textViewTempValue.text =
+                        "${data.temperature}${requireContext().resources.getString(R.string.dim_g_c)}"
                     binding.weatherNowDataLayout.textViewPressureValue.text = data.pressure.toString()
                     binding.weatherNowDataLayout.textViewWindValue.text =
                         "${data.windSpeed} ${requireContext().resources.getString(R.string.dim_mc)}"

@@ -24,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="@dimen/fc_day_item_textSize" />
-
+                style="@style/WeatherDayItemTextStyle" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -65,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/fc_day_item_textSize" />
+                style="@style/WeatherDayItemTextStyle" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -73,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dim_g_c"
-                android:textSize="@dimen/fc_day_item_textSize" />
+                style="@style/WeatherDayItemTextStyle" />
         </LinearLayout>
 
 
@@ -91,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/fc_day_item_textSize" />
+                style="@style/WeatherDayItemTextStyle" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -99,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dim_mc"
-                android:textSize="@dimen/fc_day_item_textSize" />
+                style="@style/WeatherDayItemTextStyle" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline

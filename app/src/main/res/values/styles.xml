@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Стиль текста для привественных окон greetings. -->
+    <!-- Fragment greetings. -->
     <style name="greetingsTextStyle">
         <item name="android:paddingStart">4dp</item>
         <item name="android:textSize">18sp</item>
@@ -9,7 +9,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <!-- SettingStyle. -->
+    <!-- Fragment Settings. -->
     <style name="GeneralSettingsStyle">
         <item name="android:background">?settingsBackground</item>
     </style>
@@ -26,5 +26,36 @@
     <style name="NavigationViewStyle">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Fragment_weather_fc_week -->
+    <style name="WeatherWeekItemTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- Fragment_weather_fc_day -->
+    <style name="WeatherDayItemTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- Fragment_weather_fc_header_layout -->
+    <style name="WeatherHeaderTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="WeatherHeaderTempDescTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="WeatherHeaderTempValueTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">38sp</item>
+    </style>
+
+    <!-- Fragment_weather_fc_location_name-->
+    <style name="WeatherLocationTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">@dimen/weather_fc_card_name_padding</item>
+        <item name="android:paddingBottom">@dimen/weather_fc_card_name_padding</item>
+        <item name="android:layout_marginTop">@dimen/weather_fc_card_name_margin</item>
+        <item name="android:layout_marginBottom">@dimen/weather_fc_card_name_margin</item>
     </style>
 </resources>

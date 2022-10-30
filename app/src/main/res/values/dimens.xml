@@ -19,7 +19,7 @@
     <dimen name="fc_header_value_textSize">20sp</dimen>
     <dimen name="fc_header_weather_icon_height">80dp</dimen>
     <dimen name="fc_header_weather_icon_min_WH">40dp</dimen>
-    <dimen name="fc_header_temp_value_textSize">36sp</dimen>
+    <dimen name="fc_header_temp_value_textSize">38sp</dimen>
     <dimen name="fc_header_wind_icon_min_WH">60dp</dimen>
 
     <!-- Fragment_weather_fc_week_item. -->
@@ -28,7 +28,6 @@
     <dimen name="fc_week_item_wind_marginStart">8dp</dimen>
     <dimen name="fc_week_item_wind_width">28dp</dimen>
     <dimen name="fc_week_item_descr_marginStart">4dp</dimen>
-    <dimen name="fc_week_item_textSize">20sp</dimen>
 
     <!-- Fragment_weather_fc_day_item. -->
     <dimen name="fc_day_item_textSize">20sp</dimen>
@@ -38,8 +37,8 @@
     <!-- Fragment_weather_fc. -->
     <dimen name="weather_fc_header_margin_top">54dp</dimen>
     <dimen name="weather_fc_toolbar_height">2dp</dimen>
-    <dimen name="weather_fc_card_name_paddingTop">8dp</dimen>
-    <dimen name="weather_fc_card_name_paddingBottom">12dp</dimen>
+    <dimen name="weather_fc_card_name_margin">3dp</dimen>
+    <dimen name="weather_fc_card_name_padding">8dp</dimen>
     <dimen name="weather_fc_card_name_cornerRadius">2dp</dimen>
     <dimen name="weather_fc_name_textSize">28sp</dimen>
     <dimen name="weather_fc_name_elevation">20dp</dimen>
