@@ -61,7 +61,7 @@ class FragmentAppNavigation : Fragment() {
 
         //Подгружаем начальный фрагмент
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(binding.navigationContainer.id, fragmentWeather,TAG_WEATHER_FRAGMENT)
+            .replace(binding.navigationContainer.id, fragmentWeather, TAG_WEATHER_FRAGMENT)
             .commit()
         return binding.root
     }
@@ -102,19 +102,19 @@ class FragmentAppNavigation : Fragment() {
             } else {
                 //Измененение позиции кнопок
                 changeSetFAB(false)
-                    coroutineScope.launch {
-                        delay(FAB_ANIMATION_DURATION / 3)
-                        binding.fabFavorite.visibility = View.INVISIBLE
-                        delay(FAB_ANIMATION_DURATION / 3)
-                        binding.fabMyLocation.visibility = View.INVISIBLE
-                    }
+                coroutineScope.launch {
+                    delay(FAB_ANIMATION_DURATION / 3)
+                    binding.fabFavorite.visibility = View.INVISIBLE
+                    delay(FAB_ANIMATION_DURATION / 3)
+                    binding.fabMyLocation.visibility = View.INVISIBLE
+                }
 
-                    binding.fabMenu.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(),
-                            (R.drawable.ic_menu)
-                        )
+                binding.fabMenu.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        (R.drawable.ic_menu)
                     )
+                )
             }
         }
     }
@@ -128,7 +128,7 @@ class FragmentAppNavigation : Fragment() {
      * _____________________________________________________________
      * Возвращает результат работы: true - удачно, false - ошибка
      */
-    private fun changeSetFAB(show: Boolean){
+    private fun changeSetFAB(show: Boolean) {
         val buttons = listOf(
             binding.fabMenu,
             binding.fabFavorite,
@@ -139,21 +139,22 @@ class FragmentAppNavigation : Fragment() {
         changeBounds.duration = FAB_ANIMATION_DURATION
 
         ConstraintSet().apply {
-        clone(binding.containLayout)
+            clone(binding.containLayout)
             // Разворачиваем/сворачиваем кнопки меню
 
             try {
-                if (show){//привязываем каждую последующую кнопку к предыдущей
-                    for (i in 1 until buttons.size){
+                if (show) {//привязываем каждую последующую кнопку к предыдущей
+                    for (i in 1 until buttons.size) {
                         this.clear(buttons[i].id, ConstraintSet.BOTTOM)
-                        this.connect(buttons[i].id,
+                        this.connect(
+                            buttons[i].id,
                             ConstraintSet.BOTTOM,
-                            buttons[i-1].id,
+                            buttons[i - 1].id,
                             ConstraintSet.TOP,
-                            8)
+                            8
+                        )
                     }
-                }
-                else{ //привязываем все кнопки к низу экрана
+                } else { //привязываем все кнопки к низу экрана
                     for (i in 1 until buttons.size) {
                         this.clear(buttons[i].id, ConstraintSet.BOTTOM)
                         this.connect(
@@ -165,15 +166,14 @@ class FragmentAppNavigation : Fragment() {
                         )
                     }
                 }
-            }catch (e: IndexOutOfBoundsException){
+            } catch (e: IndexOutOfBoundsException) {
                 e.printStackTrace()
-                Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                Log.e("Developer_error", "fun changeSetFAB: IndexOutOfBounds")
                 showToast("${resources.getString(R.string.application_error)}")
-            }finally {
+            } finally {
                 binding.fabFavorite.visibility = View.INVISIBLE
                 binding.fabMyLocation.visibility = View.INVISIBLE
             }
-
 
             TransitionManager.beginDelayedTransition(
                 binding.containLayout,
@@ -186,7 +186,7 @@ class FragmentAppNavigation : Fragment() {
 
     //region поиск погоды по текущей геолокации
     //Функция поиска погоды по текущей геолокации
-    private fun initFabMyLocation(){
+    private fun initFabMyLocation() {
         //подписка на получение геоданных
         binding.fabMyLocation.setOnClickListener {
             if (checkSinglePermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -204,26 +204,26 @@ class FragmentAppNavigation : Fragment() {
                             0L,
                             0F, locationListener
                         )
-                    }catch (e: IOException){
+                    } catch (e: IOException) {
                         e.printStackTrace()
-                        Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                        Log.e("Developer_error", "fun changeSetFAB: IndexOutOfBounds")
                         showToast("${resources.getString(R.string.application_error)}")
                         fabMyLocationLoading = false
                         it.isClickable = true
-                    }catch (e: IllegalArgumentException){
-                        Log.e("Developer_error","fun changeSetFAB: IndexOutOfBounds")
+                    } catch (e: IllegalArgumentException) {
+                        Log.e("Developer_error", "fun changeSetFAB: IndexOutOfBounds")
                         showToast("${resources.getString(R.string.application_error)}")
                         fabMyLocationLoading = false
                         it.isClickable = true
                     }
-                }else{
+                } else {
                     showToast(requireContext().resources.getString(R.string.no_permission_geolocation))
                 }
-            }
-            else {
+            } else {
                 getSinglePermission(
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    requireActivity(),requireContext(),REQUEST_CODE_GEOLOCATION)
+                    requireActivity(), requireContext(), REQUEST_CODE_GEOLOCATION
+                )
             }
         }
     }
@@ -238,24 +238,24 @@ class FragmentAppNavigation : Fragment() {
         binding.fabMyLocation.isClickable = true
 
         //Выдаём запрос во ViewModel на поиск погоды в найденной локации
-        fragmentWeather.getWeatherByLocation(location.latitude,location.longitude)
+        fragmentWeather.getWeatherByLocation(location.latitude, location.longitude)
     }
 
     //Функция анимации кнопки (кнопка крутится пока идёт запрос геолокации)
-    private fun animateLoadingGeolocation(){
+    private fun animateLoadingGeolocation() {
         binding.fabMyLocation.setImageDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
                 (R.drawable.ic_loading)
             )
         )
-        coroutineScope.launch{
-            while (fabMyLocationLoading){
+        coroutineScope.launch {
+            while (fabMyLocationLoading) {
                 ObjectAnimator
-                    .ofFloat(binding.fabMyLocation,View.ROTATION,0f,360F)
-                    .setDuration(FAB_ANIMATION_DURATION*2)
+                    .ofFloat(binding.fabMyLocation, View.ROTATION, 0f, 360F)
+                    .setDuration(FAB_ANIMATION_DURATION * 2)
                     .start()
-                delay(FAB_ANIMATION_DURATION*2)
+                delay(FAB_ANIMATION_DURATION * 2)
             }
             binding.fabMyLocation.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -268,11 +268,12 @@ class FragmentAppNavigation : Fragment() {
     //endregion
 
     //Функция записи текущего города как "любимого"
-    private fun initFabFavorite(){
+    private fun initFabFavorite() {
         binding.fabFavorite.setOnClickListener {
             //получаем последнюю запрошенную локацию
-            val sharedPref = requireContext().getSharedPreferences(PREF_SETTINGS,Context.MODE_PRIVATE)
-            val lastCity =  sharedPref.getString(PREF_SETTINGS_LAST_CITY, PREF_SETTINGS_DEFAULT_CITY)
+            val sharedPref =
+                requireContext().getSharedPreferences(PREF_SETTINGS, Context.MODE_PRIVATE)
+            val lastCity = sharedPref.getString(PREF_SETTINGS_LAST_CITY, PREF_SETTINGS_DEFAULT_CITY)
             //записываем последнюю запрошенную локацию
             val editor = sharedPref.edit()
             editor.putString(PREF_SETTINGS_FAVORITE_CITY, lastCity).apply()
@@ -283,27 +284,33 @@ class FragmentAppNavigation : Fragment() {
     //Работа бокового меню Drawer+NavigationView
     private fun inintMenu() {
         binding.navigationView.setNavigationItemSelectedListener {
-            when (it.itemId){
+            when (it.itemId) {
                 R.id.Drawer_About -> {
-                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_ABOUT)
-                    replaceFragment(findFragment,AboutAppFragment(),TAG_FRAGMENT_ABOUT)
+                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(
+                        TAG_FRAGMENT_ABOUT
+                    )
+                    replaceFragment(findFragment, AboutAppFragment(), TAG_FRAGMENT_ABOUT)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.Drawer_Settings -> {
-                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_SETTINGS)
-                    replaceFragment(findFragment, SettingsFragment(),TAG_FRAGMENT_SETTINGS)
+                    val findFragment = requireActivity().supportFragmentManager.findFragmentByTag(
+                        TAG_FRAGMENT_SETTINGS
+                    )
+                    replaceFragment(findFragment, SettingsFragment(), TAG_FRAGMENT_SETTINGS)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.Drawer_exit -> {
-                    with(requireContext().resources){
+                    with(requireContext().resources) {
                         AlertDialog.Builder(requireContext())
                             .setTitle(getString(R.string.exit))
                             .setMessage(getString(R.string.do_you_want_exit))
-                            .setPositiveButton(getString(R.string.yes)
+                            .setPositiveButton(
+                                getString(R.string.yes)
                             ) { dialog, which ->
                                 requireActivity().finish()
                             }
-                            .setNegativeButton(getString(R.string.no)
+                            .setNegativeButton(
+                                getString(R.string.no)
                             ) { dialog, which -> }
                             .show()
                     }
@@ -319,7 +326,7 @@ class FragmentAppNavigation : Fragment() {
      * если фрагмент ещё живой, то возвращает его в контейнер
      * если фрагмента нет, то создаёт новый
      */
-    private fun replaceFragment(findFragment: Fragment?, newFragment: Fragment, flag:String){
+    private fun replaceFragment(findFragment: Fragment?, newFragment: Fragment, flag: String) {
         requireActivity().supportFragmentManager.beginTransaction().apply {
             if (findFragment == null) {
                 replace(binding.navigationContainer.id, newFragment, flag)
@@ -333,7 +340,7 @@ class FragmentAppNavigation : Fragment() {
     }
 
     //Инициализация работы чип кнопки поиска в авито
-    private fun initChipAvito(){
+    private fun initChipAvito() {
         binding.chipAvito.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =

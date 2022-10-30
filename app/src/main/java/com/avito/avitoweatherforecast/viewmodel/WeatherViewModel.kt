@@ -46,7 +46,6 @@ class WeatherViewModel(
             getWeatherByLocation(it)
             liveData.postValue(WeatherAppState.Loading)
         }
-
     }
 
     fun getWeatherByLocation(locate: City){

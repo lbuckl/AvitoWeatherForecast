@@ -23,8 +23,9 @@
 
     <!-- Строки для Greetings Fragment. -->
     <string name="greetings_first_text_first">Добро пожаловать в приложение "Прогноз погоды"</string>
-    <string name="greetings_second_text">Увидеть фотографию дня</string>
-    <string name="greetings_threeth_text">И просмотреть галерею NASA</string>
+    <string name="greetings_second_text">Используйте удобное боковое меню</string>
+    <string name="greetings_threeth_text">Окрыть погоду в Вашей локации</string>
+    <string name="greetings_threeth_text_second">Выбрать город, который будет открываться первым</string>
     <string name="letStart">Начнём</string>
 
     <!-- Строки для Settings. -->

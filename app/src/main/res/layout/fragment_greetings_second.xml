@@ -8,13 +8,13 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/greetings"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/view_mars" />
+        app:srcCompat="@drawable/img_greetings_second" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,13 +59,15 @@
     <TextView
         android:id="@+id/textView"
         style="@style/greetingsTextStyle"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/greeting_text_marginStart"
         android:background="#1A000000"
         android:gravity="center"
+        android:textSize="@dimen/greetings_second_textSize"
         android:text="@string/greetings_second_text"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/barrier_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_bottom" />
 
@@ -74,5 +76,19 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="guideline_vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

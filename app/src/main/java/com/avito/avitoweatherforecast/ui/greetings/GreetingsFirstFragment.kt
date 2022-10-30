@@ -36,44 +36,21 @@ class GreetingsFirstFragment : Fragment() {
         val duration = 1000L
         val startDelay = 1000L
         val visionDelay = duration + startDelay + 1000
-
-        //включаем рендер эффект
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val blurEffect = RenderEffect.createBlurEffect(
-                10f, 0f,
-                Shader.TileMode.MIRROR
-            )
-            with(binding) {
-                imageViewEarth.setRenderEffect(blurEffect)
-            }
-        }
-
-        //Анимация свайпа
-        ViewCompat.animate(binding.imageViewSwipe)
-            .translationX(-100.0f)
-            .setDuration(duration)
-            .setInterpolator(CycleInterpolator(2F))
-            .setStartDelay(startDelay).start()
-
-        //Убираем подсказку и обнуляем рендер
         coroutineScope.launch {
+        delay(startDelay)
+        //Анимация появления текста
+        val fade = Fade().setDuration(VISIBLE_DELAY)
+        TransitionManager.beginDelayedTransition(binding.root,fade)
+        binding.textViewGeneral.visibility = View.VISIBLE
+            delay(duration)
+            //Анимация свайпа
+            ViewCompat.animate(binding.imageViewSwipe)
+                .translationX(-100.0f)
+                .setDuration(duration)
+                .setInterpolator(CycleInterpolator(2F))
+                .setStartDelay(startDelay).start()
             delay(visionDelay)
             binding.imageViewSwipe.visibility = View.INVISIBLE
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                val blurEffect = RenderEffect.createBlurEffect(
-                    0.01f, 0f,
-                    Shader.TileMode.MIRROR
-                )
-                with(binding) {
-                    //Снимаем рендер
-                    imageViewEarth.setRenderEffect(blurEffect)
-                    //Анимация появления текста
-                    val fade = Fade().setDuration(VISIBLE_DELAY)
-                    TransitionManager.beginDelayedTransition(binding.root,fade)
-                    binding.textViewGeneral.visibility = View.VISIBLE
-                }
-            }
         }
 
         return binding.root

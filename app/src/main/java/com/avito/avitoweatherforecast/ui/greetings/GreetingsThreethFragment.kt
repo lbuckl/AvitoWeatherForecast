@@ -56,6 +56,10 @@ class GreetingsThreethFragment : Fragment() {
                 TransitionManager.beginDelayedTransition(binding.root,fade)
                 binding.textView.visibility = View.VISIBLE
                 delay(2000)
+                TransitionManager.beginDelayedTransition(binding.root,fade)
+                binding.textViewSecond.visibility = View.VISIBLE
+                delay(2000)
+                TransitionManager.beginDelayedTransition(binding.root,fade)
                 binding.buttonStart.visibility = View.VISIBLE
             }
         }

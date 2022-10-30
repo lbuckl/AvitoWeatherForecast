@@ -47,4 +47,7 @@
     <!-- Chip_avito_fc. -->
     <dimen name="chip_avito_height">64dp</dimen>
     <dimen name="chip_avito_iconSize">60dp</dimen>
+    <dimen name="greeting_text_marginStart">4dp</dimen>
+    <dimen name="greetings_first_textSize">22sp</dimen>
+    <dimen name="greetings_second_textSize">22sp</dimen>
 </resources>
