@@ -33,23 +33,20 @@ class GreetingsFirstFragment : Fragment() {
         _binding = FragmentGreetingsFirstBinding.inflate(inflater)
 
         //Распределение времени для анимации и скрытия
-        val duration = 1000L
-        val startDelay = 1000L
-        val visionDelay = duration + startDelay + 1000
         coroutineScope.launch {
-        delay(startDelay)
+        delay(VISIBLE_DELAY/2)
         //Анимация появления текста
         val fade = Fade().setDuration(VISIBLE_DELAY)
         TransitionManager.beginDelayedTransition(binding.root,fade)
         binding.textViewGeneral.visibility = View.VISIBLE
-            delay(duration)
+            delay(VISIBLE_DELAY/2)
             //Анимация свайпа
             ViewCompat.animate(binding.imageViewSwipe)
                 .translationX(-100.0f)
-                .setDuration(duration)
+                .setDuration(VISIBLE_DELAY/2)
                 .setInterpolator(CycleInterpolator(2F))
-                .setStartDelay(startDelay).start()
-            delay(visionDelay)
+                .setStartDelay(VISIBLE_DELAY/2).start()
+            delay(VISIBLE_DELAY)
             binding.imageViewSwipe.visibility = View.INVISIBLE
         }
 
