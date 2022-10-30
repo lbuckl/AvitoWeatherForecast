@@ -60,13 +60,18 @@ class WeatherViewModel(
                     response: Response<YandexWeatherDTO>
                 ) {
                     if (response.body() != null) {
-                        liveData.postValue(
-                            WeatherAppState.Success(
-                                collectWeatherFromRequestData(locate, response.body()!!)
+                        try {
+                            liveData.postValue(
+                                WeatherAppState.Success(
+                                    collectWeatherFromRequestData(locate, response.body()!!)
+                                )
                             )
-                        )
-                        //Загружаем в память последний город
-                        rememberLastCity(response.body()!!.geoObject.locality.name)
+                            //Загружаем в память последний город
+                            rememberLastCity(response.body()!!.geoObject.locality.name)
+                        }catch (e: NullPointerException){
+                            e.printStackTrace()
+                            liveData.postValue(WeatherAppState.Error(resources.getString(R.string.error_weather_loading)))
+                        }
                     } else liveData.postValue(WeatherAppState.Error(resources.getString(R.string.error_weather_loading)))
                 }
 

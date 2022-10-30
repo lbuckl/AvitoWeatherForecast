@@ -62,24 +62,3 @@ data class WeatherFCData(
     val date: String,
     val weatherData: List<WeatherData>
 ): Parcelable
-
-/**
- * _________________________________________________
- */
-@Parcelize
-data class WeatherNew(
-    val city: City,
-    val data: WeatherDataNew,
-    val forecast: List<WeatherDataNew>
-): Parcelable
-
-@Parcelize
-data class WeatherDataNew(
-    val date: String,
-    val part: String,
-    val temperature: Int,
-    val icon: String?,
-    val pressure: Double,
-    val windSpeed: Double,
-    val windDirection: String
-): Parcelable
